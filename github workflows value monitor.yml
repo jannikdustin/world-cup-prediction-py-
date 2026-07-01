@@ -1,0 +1,91 @@
+name: WM 2026 Value Monitor
+
+on:
+  schedule:
+    # 2x taeglich, jeweils UTC (MESZ = UTC+2, MEZ = UTC+1):
+    # 08:00 UTC = 10:00 MESZ / 09:00 MEZ  -- Morgen-Check
+    # 18:00 UTC = 20:00 MESZ / 19:00 MEZ  -- Abend-Check vor Anstoss
+    - cron: "0 8 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch: {}   # erlaubt manuellen Start ueber den "Run workflow" Button
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Abhaengigkeiten installieren
+        run: pip install -r requirements.txt
+
+      - name: WM-Quoten abrufen
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python value_monitor/fetch_odds.py
+
+      - name: WM Value-Scan ausfuehren
+        run: python value_monitor/run_value_scan.py
+
+      - name: WM Dashboard bauen
+        run: python value_monitor/generate_dashboard.py value_monitor/results.json value_monitor/dashboard.html "Value Radar — WM 2026"
+
+      - name: Klub-Quoten abrufen (Top 5 Ligen + Europa)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python value_monitor/fetch_odds_clubs.py
+
+      - name: Klub Value-Scan ausfuehren (clubelo.com)
+        run: python value_monitor/run_value_scan_clubs.py
+
+      - name: Klub Dashboard bauen
+        run: python value_monitor/generate_dashboard.py value_monitor/results_clubs.json value_monitor/dashboard_clubs.html "Value Radar — Top 5 Ligen + Europa"
+
+      - name: Dashboards fuer GitHub Pages vorbereiten
+        run: |
+          mkdir -p _site
+          cp value_monitor/dashboard.html _site/wm.html
+          cp value_monitor/dashboard_clubs.html _site/clubs.html
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="de"><head><meta charset="UTF-8">
+          <title>Value Radar — Übersicht</title>
+          <style>
+            body{background:#0b0d0f;color:#e7e9ea;font-family:-apple-system,sans-serif;
+                 display:flex;flex-direction:column;align-items:center;justify-content:center;
+                 height:100vh;margin:0;gap:16px;}
+            a{color:#3ddc84;font-size:20px;text-decoration:none;padding:14px 28px;
+               border:1px solid #23272b;border-radius:8px;}
+            a:hover{border-color:#3ddc84;}
+          </style></head>
+          <body>
+            <a href="wm.html">⚽ WM 2026 Dashboard</a>
+            <a href="clubs.html">🏆 Top 5 Ligen + Europa Dashboard</a>
+          </body></html>
+          EOF
+
+      - name: Pages Artefakt hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: scan
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Auf GitHub Pages veroeffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
