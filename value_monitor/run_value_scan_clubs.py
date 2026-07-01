@@ -29,6 +29,8 @@ import io
 import json
 import os
 import sys
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
@@ -84,13 +86,30 @@ NAME_OVERRIDES = {
 }
 
 
-def fetch_clubelo_fixtures():
-    """Laedt Fixtures-CSV von ClubElo und gibt eine Liste von dicts zurueck."""
+def fetch_clubelo_fixtures(max_retries=3, base_delay=5):
+    """Laedt Fixtures-CSV von ClubElo, mit Retry bei kurzzeitigen Verbindungs-
+    problemen (clubelo.com ist manchmal kurz langsam/ueberlastet, besonders
+    von GitHub-Actions-Servern aus). Gibt eine Liste von dicts zurueck."""
     req = urllib.request.Request(
         CLUBELO_FIXTURES_URL, headers={"User-Agent": "value-monitor/1.0"}
     )
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        text = resp.read().decode("utf-8")
+
+    last_error = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                text = resp.read().decode("utf-8")
+            break  # Erfolg, Schleife verlassen
+        except (urllib.error.URLError, TimeoutError) as e:
+            last_error = e
+            print(f"  Versuch {attempt}/{max_retries} fehlgeschlagen ({e}), "
+                  f"warte {base_delay * attempt}s ...", file=sys.stderr)
+            if attempt < max_retries:
+                time.sleep(base_delay * attempt)
+    else:
+        raise RuntimeError(
+            f"clubelo.com nach {max_retries} Versuchen nicht erreichbar: {last_error}"
+        )
 
     reader = csv.DictReader(io.StringIO(text))
     fixtures = []
@@ -158,7 +177,28 @@ def load_odds():
 def main():
     odds_matches = load_odds()
     print("Lade Fixture-Wahrscheinlichkeiten von clubelo.com ...")
-    fixtures = fetch_clubelo_fixtures()
+    try:
+        fixtures = fetch_clubelo_fixtures()
+    except RuntimeError as e:
+        # clubelo.com war trotz Retries nicht erreichbar. Statt den ganzen
+        # Workflow (inkl. WM-Dashboard-Veroeffentlichung) abbrechen zu lassen,
+        # schreiben wir ein leeres, aber gueltiges results_clubs.json -- das
+        # Klub-Dashboard zeigt dann einfach "keine Spiele gefunden" an, bis
+        # der naechste planmaessige Lauf clubelo.com wieder erreicht.
+        print(f"FEHLER: {e}", file=sys.stderr)
+        print("Schreibe leeres Ergebnis, damit der Workflow trotzdem "
+              "fortfahren kann.", file=sys.stderr)
+        output = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "match_count": 0,
+            "value_count": 0,
+            "skipped": [f"clubelo.com nicht erreichbar: {e}"],
+            "matches": [],
+        }
+        with open(RESULTS_PATH, "w", encoding="utf-8") as f:
+            json.dump(output, f, ensure_ascii=False, indent=2)
+        return
+
     print(f"{len(fixtures)} anstehende Spiele bei ClubElo gefunden.")
 
     results = []
