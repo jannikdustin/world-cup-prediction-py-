@@ -2,11 +2,12 @@ name: WM 2026 Value Monitor
 
 on:
   schedule:
-    # 2x taeglich, jeweils UTC (MESZ = UTC+2, MEZ = UTC+1):
-    # 08:00 UTC = 10:00 MESZ / 09:00 MEZ  -- Morgen-Check
-    # 18:00 UTC = 20:00 MESZ / 19:00 MEZ  -- Abend-Check vor Anstoss
-    - cron: "0 8 * * *"
-    - cron: "0 18 * * *"
+    # 1x taeglich um 01:00 UTC = 02:00 Uhr MEZ (Winter) / 03:00 Uhr MESZ (Sommer) --
+    # bewusst nachts, damit neu erschienene Spiele/Turniere zuverlaessig VOR dem
+    # naechsten Lauf zum ersten Mal gesehen werden und Bankroll-Wetten garantiert
+    # nur einmal pro Tag und pro Spiel platziert werden (kein zweiter Lauf am
+    # selben Tag, der noch mal draufschauen und ggf. doppelt buchen koennte).
+    - cron: "0 1 * * *"
   workflow_dispatch: {}   # erlaubt manuellen Start ueber den "Run workflow" Button
 
 permissions:
@@ -53,6 +54,11 @@ jobs:
       - name: Tennis Value-Scan ausfuehren (Elo aus TennisMyLife-Daten)
         run: python value_monitor/run_value_scan_tennis.py
 
+      - name: Faellige Wetten abrechnen (Bankroll-Tracker)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python value_monitor/settle_bets.py
+
       - name: Kombiniertes Dashboard bauen
         run: python value_monitor/generate_combined_dashboard.py
 
@@ -60,6 +66,14 @@ jobs:
         run: |
           mkdir -p _site
           cp value_monitor/combined_dashboard.html _site/index.html
+
+      - name: Bankroll-Ledger committen
+        run: |
+          git config user.name "value-monitor-bot"
+          git config user.email "actions@github.com"
+          git add value_monitor/ledger_*.json
+          git diff --staged --quiet && echo "Keine Ledger-Aenderungen." || git commit -m "Bankroll-Ledger aktualisieren [skip ci]"
+          git push
 
       - name: Pages Artefakt hochladen
         uses: actions/upload-pages-artifact@v3
