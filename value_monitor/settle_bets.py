@@ -4,6 +4,11 @@ Wetten, deren Spiel inzwischen vorbei sein muesste, holt das Endergebnis ueber
 den Scores-Endpoint von The Odds API und schreibt Gewinn/Verlust in die
 jeweilige Bankroll fort.
 
+BANKROLL-SEMANTIK: current_bankroll ist der Live-Kontostand. Der Einsatz
+wurde beim Platzieren der Wette bereits abgezogen (siehe bankroll.py) --
+hier wird bei Gewinn der volle Payout gutgeschrieben, bei Verlust bleibt
+er einfach weg, bei Stornierung (void) wird der Einsatz zurueckerstattet.
+
 WICHTIG -- Zeitfenster: The Odds API liefert Endergebnisse nur bis zu 3 Tage
 rueckwirkend (daysFrom max. 3). Wetten, die laenger als das unbeglichen sind
 (z.B. weil der Workflow mal ausgefallen ist oder das Ergebnis dort nie
@@ -121,10 +126,13 @@ def settle_ledger(ledger_path):
         if entry is None or not entry.get("completed"):
             if age_days > bankroll.MAX_SETTLEMENT_WINDOW_DAYS:
                 # Ausserhalb des 3-Tage-Fensters, Ergebnis nicht mehr
-                # zuverlaessig abrufbar -- Wette stornieren, Einsatz zurueckbuchen.
+                # zuverlaessig abrufbar -- Wette stornieren. Der Einsatz wurde
+                # beim Platzieren bereits von current_bankroll abgezogen
+                # (siehe bankroll.py), also muss er hier zurueckgebucht werden.
+                ledger["current_bankroll"] = round(ledger["current_bankroll"] + b["stake"], 2)
                 b["status"] = "void"
                 b["settled_at"] = now.isoformat()
-                b["payout"] = b["stake"]  # Einsatz "zurueckerstattet"
+                b["payout"] = b["stake"]  # Einsatz zurueckerstattet
                 b["bankroll_after"] = ledger["current_bankroll"]
                 voided_count += 1
             continue  # noch nicht faellig / noch nicht completed, naechstes Mal erneut pruefen
@@ -139,14 +147,16 @@ def settle_ledger(ledger_path):
             (winner == "draw" and b["outcome"] == "Remis")
         )
 
+        # Der Einsatz wurde beim Platzieren bereits abgezogen (siehe
+        # bankroll.py). Bei Gewinn kommt der komplette Payout (Einsatz x
+        # Quote) zurueck; bei Verlust bleibt der Einsatz einfach weg -- es
+        # gibt hier nichts mehr abzuziehen.
         if won:
             payout = round(b["stake"] * b["odd"], 2)
-            profit = payout - b["stake"]
+            ledger["current_bankroll"] = round(ledger["current_bankroll"] + payout, 2)
         else:
             payout = 0.0
-            profit = -b["stake"]
 
-        ledger["current_bankroll"] = round(ledger["current_bankroll"] + profit, 2)
         b["status"] = "won" if won else "lost"
         b["settled_at"] = now.isoformat()
         b["payout"] = payout

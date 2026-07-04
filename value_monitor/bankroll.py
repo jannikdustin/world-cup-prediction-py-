@@ -11,11 +11,24 @@ keine echte Wette platziert. Die Bankroll-Kurve zeigt, wie sich 1.000 EUR
 entwickelt HAETTEN, wenn du jedes Mal exakt den angezeigten Kelly-Anteil
 gesetzt haettest.
 
+BANKROLL-SEMANTIK -- current_bankroll ist der LIVE-KONTOSTAND (verfuegbares
+Geld), kein reiner "nur abgerechnete Wetten"-Wert:
+- Beim Platzieren einer Wette wird der Einsatz SOFORT von current_bankroll
+  abgezogen (das Geld ist "gebunden", genau wie bei einem echten Konto).
+- Bei Gewinn (settle_bets.py) wird der volle Payout (Einsatz x Quote)
+  wieder gutgeschrieben.
+- Bei Verlust passiert nichts weiter (der Einsatz bleibt abgezogen).
+- Bei Stornierung (void, z.B. Ergebnis nicht mehr abrufbar) wird der
+  Einsatz zurueckerstattet.
+current_bankroll + Summe aller offenen Einsaetze (siehe Dashboard "Im
+Einsatz") ergibt den Gesamtwert (current_bankroll VOR Abzug offener Wetten).
+
 Design-Entscheidungen (siehe README fuer Details):
 - Voller Kelly-Einsatz (nicht halber)
 - Drei komplett getrennte Bankrolls (WM / Klubs / Tennis), je eigene
   ledger_<pipeline>.json
 - Nur Signale mit EV > EV_THRESHOLD_PCT gelten als "platzierte Wette"
+- Nur Quote >= MIN_ODD gilt als "platzierte Wette"
 - Ein Match+Ausgang wird nur EINMAL geloggt (beim ersten Erscheinen als
   qualifizierendes Signal), auch wenn der Workflow mehrmals taeglich laeuft
   und dasselbe Spiel in mehreren Laeufen auftaucht
@@ -122,6 +135,7 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
 
         stake = ledger["current_bankroll"] * (outcome["kelly_pct"] / 100.0)
         stake = max(0.0, min(stake, ledger["current_bankroll"]))  # nie mehr als vorhanden
+        stake = round(stake, 2)
 
         ledger["bets"].append({
             "id": bet_id,
@@ -135,12 +149,20 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
             "odd": outcome["odd"],
             "ev_pct": outcome["ev_pct"],
             "kelly_pct": outcome["kelly_pct"],
-            "stake": round(stake, 2),
+            "stake": stake,
             "status": "pending",   # pending | won | lost | void
             "settled_at": None,
             "payout": None,
             "bankroll_after": None,
         })
+
+        # WICHTIG: Der Einsatz wird SOFORT von der verfuegbaren Bankroll
+        # abgezogen (wie bei einem echten Kontostand), nicht erst bei der
+        # Abrechnung. So sieht man live, wie viel Geld gerade gebunden ist,
+        # und ein zweites Signal im selben Lauf staked korrekt gegen das,
+        # was nach dem ersten Einsatz tatsaechlich noch uebrig ist.
+        ledger["current_bankroll"] = round(ledger["current_bankroll"] - stake, 2)
+
         added += 1
 
     return added

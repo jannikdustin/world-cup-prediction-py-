@@ -376,17 +376,23 @@ function computeStats(d){
   const won = bk.bets.filter(b => b.status === "won").length;
   const lost = bk.bets.filter(b => b.status === "lost").length;
   const voided = bk.bets.filter(b => b.status === "void").length;
-  const pending = bk.bets.filter(b => b.status === "pending").length;
-  const roi = ((bk.current_bankroll - bk.starting_bankroll) / bk.starting_bankroll) * 100;
+  const pendingBets = bk.bets.filter(b => b.status === "pending")
+    .sort((a, b) => new Date(a.commence_time) - new Date(b.commence_time));
+  const exposure = pendingBets.reduce((sum, b) => sum + b.stake, 0);
+  // current_bankroll ist der LIVE-Kontostand: Einsaetze werden beim
+  // Platzieren sofort abgezogen (siehe bankroll.py), nicht erst bei
+  // Abrechnung. "equity" rechnet die gerade gebundenen Einsaetze wieder
+  // dazu und zeigt den Gesamtwert inkl. offener Wetten.
+  const equity = bk.current_bankroll + exposure;
+  const roi = ((equity - bk.starting_bankroll) / bk.starting_bankroll) * 100;
   const winRate = settled.length ? (won / settled.length) * 100 : null;
 
   const matches = d.matches || [];
   const avgEV = matches.length ? matches.reduce((s,m) => s + m.best_ev_pct, 0) / matches.length : null;
   const bestEV = matches.length ? Math.max(...matches.map(m => m.best_ev_pct)) : null;
-  const avgMargin = matches.length ? matches.reduce((s,m) => s + m.bookmaker_margin_pct, 0) / matches.length : null;
   const valueRate = matches.length ? (d.value_count / matches.length) * 100 : null;
 
-  return { settled, won, lost, voided, pending, roi, winRate, avgEV, bestEV, avgMargin, valueRate };
+  return { settled, won, lost, voided, pendingBets, exposure, equity, roi, winRate, avgEV, bestEV, valueRate };
 }
 
 /* ---------- Stat tiles ---------- */
@@ -408,13 +414,13 @@ function renderStatGrid(d, s){
   const grid = document.createElement("div");
   grid.className = "stat-grid";
   grid.innerHTML = [
-    statTile("Bankroll", fmtEUR(bk.current_bankroll), `Start ${fmtEUR(bk.starting_bankroll)}`),
-    statTile("ROI", (s.roi >= 0 ? "+" : "") + s.roi.toFixed(1) + "%", null, roiCls),
+    statTile("Kontostand", fmtEUR(bk.current_bankroll), "frei verfügbar"),
+    statTile("Gesamtwert", fmtEUR(s.equity), `Start ${fmtEUR(bk.starting_bankroll)}`),
+    statTile("ROI", (s.roi >= 0 ? "+" : "") + s.roi.toFixed(1) + "%", "auf Gesamtwert", roiCls),
+    statTile("Im Einsatz", fmtEUR(s.exposure), `${s.pendingBets.length} offene Position${s.pendingBets.length === 1 ? "" : "en"}`, s.exposure > 0 ? "amber" : null),
     statTile("Trefferquote", winRateStr, `${s.won}W · ${s.lost}L${s.voided ? " · " + s.voided + " storniert" : ""}`),
-    statTile("Offene Wetten", s.pending, `${s.settled.length} abgerechnet`),
     statTile("Ø Edge (Scan)", avgEvStr, `${d.match_count} geprüft`),
     statTile("Bester Edge", bestEvStr, "heute", s.bestEV > 8 ? "amber" : null),
-    statTile("Ø Marktmarge", s.avgMargin === null ? "—" : s.avgMargin.toFixed(1) + "%", "Buchmacher-Overround"),
     statTile("Value-Quote", s.valueRate === null ? "—" : s.valueRate.toFixed(0) + "%", `${d.value_count} von ${d.match_count}`),
   ].join("");
   return grid;
@@ -556,6 +562,24 @@ function renderMatch(m){
   return card;
 }
 
+/* ---------- Offene Positionen ---------- */
+function renderOpenPositions(s){
+  if(s.pendingBets.length === 0){
+    return '<div class="bet-log-empty">Gerade keine offenen Positionen — die gesamte Bankroll ist frei.</div>';
+  }
+  const rows = s.pendingBets.map(b => `
+    <tr>
+      <td class="match-cell">${b.home} vs ${b.away}</td>
+      <td>${b.outcome}</td>
+      <td>${b.odd.toFixed(2)}</td>
+      <td>${fmtEUR(b.stake)}</td>
+      <td>${fmtTime(b.commence_time)}</td>
+    </tr>`).join("");
+  return `<table class="bet-log"><thead><tr>
+      <th>Match</th><th>Tipp</th><th>Quote</th><th>Einsatz</th><th>Anstoß</th>
+    </tr></thead><tbody>${rows}</tbody></table>`;
+}
+
 /* ---------- Bet log ---------- */
 function renderBetLog(s){
   if(s.settled.length === 0){
@@ -606,6 +630,11 @@ function renderTabPanel(tabId){
   evBox.innerHTML = `<h3>Edge-Verteilung heutiger Scan</h3>
     <div class="chart-canvas-wrap small"><canvas id="chart-evdist-${tabId}"></canvas></div>`;
   panel.appendChild(evBox);
+
+  const openPosBox = document.createElement("div");
+  openPosBox.className = "bet-log-box";
+  openPosBox.innerHTML = `<h3>Offene Positionen — jetzt gebundenes Geld</h3>${renderOpenPositions(s)}`;
+  panel.appendChild(openPosBox);
 
   const betLogBox = document.createElement("div");
   betLogBox.className = "bet-log-box";
