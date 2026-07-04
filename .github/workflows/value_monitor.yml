@@ -37,9 +37,6 @@ jobs:
       - name: WM Value-Scan ausfuehren
         run: python value_monitor/run_value_scan.py
 
-      - name: WM Dashboard bauen
-        run: python value_monitor/generate_dashboard.py value_monitor/results.json value_monitor/dashboard.html "Value Radar — WM 2026"
-
       - name: Klub-Quoten abrufen (Top 5 Ligen + Europa)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
@@ -48,31 +45,21 @@ jobs:
       - name: Klub Value-Scan ausfuehren (clubelo.com)
         run: python value_monitor/run_value_scan_clubs.py
 
-      - name: Klub Dashboard bauen
-        run: python value_monitor/generate_dashboard.py value_monitor/results_clubs.json value_monitor/dashboard_clubs.html "Value Radar — Top 5 Ligen + Europa"
+      - name: Tennis-Quoten abrufen (aktive Turniere)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python value_monitor/fetch_odds_tennis.py
 
-      - name: Dashboards fuer GitHub Pages vorbereiten
+      - name: Tennis Value-Scan ausfuehren (Elo aus TennisMyLife-Daten)
+        run: python value_monitor/run_value_scan_tennis.py
+
+      - name: Kombiniertes Dashboard bauen
+        run: python value_monitor/generate_combined_dashboard.py
+
+      - name: Dashboard fuer GitHub Pages vorbereiten
         run: |
           mkdir -p _site
-          cp value_monitor/dashboard.html _site/wm.html
-          cp value_monitor/dashboard_clubs.html _site/clubs.html
-          cat > _site/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="de"><head><meta charset="UTF-8">
-          <title>Value Radar — Übersicht</title>
-          <style>
-            body{background:#0b0d0f;color:#e7e9ea;font-family:-apple-system,sans-serif;
-                 display:flex;flex-direction:column;align-items:center;justify-content:center;
-                 height:100vh;margin:0;gap:16px;}
-            a{color:#3ddc84;font-size:20px;text-decoration:none;padding:14px 28px;
-               border:1px solid #23272b;border-radius:8px;}
-            a:hover{border-color:#3ddc84;}
-          </style></head>
-          <body>
-            <a href="wm.html">⚽ WM 2026 Dashboard</a>
-            <a href="clubs.html">🏆 Top 5 Ligen + Europa Dashboard</a>
-          </body></html>
-          EOF
+          cp value_monitor/combined_dashboard.html _site/index.html
 
       - name: Pages Artefakt hochladen
         uses: actions/upload-pages-artifact@v3
