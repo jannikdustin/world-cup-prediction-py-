@@ -18,9 +18,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_PATH = os.path.join(HERE, "combined_dashboard.html")
 
 SOURCES = [
-    ("wm", "⚽ WM 2026", os.path.join(HERE, "results.json")),
-    ("clubs", "🏆 Top 5 Ligen + Europa", os.path.join(HERE, "results_clubs.json")),
-    ("tennis", "🎾 Tennis ATP", os.path.join(HERE, "results_tennis.json")),
+    ("wm", "⚽ WM 2026", os.path.join(HERE, "results.json"), os.path.join(HERE, "ledger_wm.json")),
+    ("clubs", "🏆 Top 5 Ligen + Europa", os.path.join(HERE, "results_clubs.json"), os.path.join(HERE, "ledger_clubs.json")),
+    ("tennis", "🎾 Tennis ATP", os.path.join(HERE, "results_tennis.json"), os.path.join(HERE, "ledger_tennis.json")),
 ]
 
 
@@ -31,10 +31,19 @@ def load_or_empty(path):
         return json.load(f)
 
 
+def load_ledger_or_empty(path):
+    if not os.path.exists(path):
+        return {"starting_bankroll": 1000.0, "current_bankroll": 1000.0, "bets": []}
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
 def main():
     data_by_tab = {}
-    for tab_id, label, path in SOURCES:
-        data_by_tab[tab_id] = {"label": label, **load_or_empty(path)}
+    for tab_id, label, results_path, ledger_path in SOURCES:
+        results = load_or_empty(results_path)
+        ledger = load_ledger_or_empty(ledger_path)
+        data_by_tab[tab_id] = {"label": label, **results, "bankroll": ledger}
 
     data_json = json.dumps(data_by_tab, ensure_ascii=False)
     html = HTML_TEMPLATE.replace("__DATA_JSON__", data_json)
@@ -229,6 +238,40 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     font-size: 12px;
     color: var(--warn);
   }
+
+  .bankroll-box{
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .bankroll-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .bankroll-figures{ display: flex; gap: 28px; flex-wrap: wrap; }
+  .bankroll-figure .label{ font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .04em; }
+  .bankroll-figure .value{ font-size: 22px; font-weight: 700; font-family: "JetBrains Mono", "SF Mono", Consolas, monospace; }
+  .bankroll-figure .value.pos{ color: var(--value); }
+  .bankroll-figure .value.neg{ color: #e0645a; }
+  .bankroll-pending{ font-size: 12px; color: var(--text-dim); }
+  .bankroll-chart{ width: 100%; height: 60px; display: block; }
+  .bet-log{ width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+  .bet-log th{
+    text-align: left; color: var(--text-dim); font-weight: 500; font-size: 10px;
+    text-transform: uppercase; letter-spacing: .04em; padding: 4px 6px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .bet-log td{ padding: 5px 6px; border-bottom: 1px solid rgba(255,255,255,0.03); font-family: "JetBrains Mono", "SF Mono", Consolas, monospace; }
+  .bet-log td.status-won{ color: var(--value); }
+  .bet-log td.status-lost{ color: #e0645a; }
+  .bet-log td.status-void{ color: var(--text-dim); font-style: italic; }
+  .bet-log td.match-cell{ font-family: inherit; }
 </style>
 </head>
 <body>
@@ -293,11 +336,83 @@ function renderMatch(m){
   return card;
 }
 
+function renderSparkline(points){
+  if(points.length < 2){
+    return '<div style="font-size:12px;color:var(--text-dim);">Noch zu wenig abgerechnete Wetten für eine Kurve.</div>';
+  }
+  const w = 600, h = 60, pad = 4;
+  const min = Math.min(...points), max = Math.max(...points);
+  const range = (max - min) || 1;
+  const stepX = (w - pad * 2) / (points.length - 1);
+  const coords = points.map((v, i) => {
+    const x = pad + i * stepX;
+    const y = h - pad - ((v - min) / range) * (h - pad * 2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(" ");
+  const last = points[points.length - 1];
+  const first = points[0];
+  const lineColor = last >= first ? "#3ddc84" : "#e0645a";
+  return `<svg class="bankroll-chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polyline points="${coords}" fill="none" stroke="${lineColor}" stroke-width="2" />
+  </svg>`;
+}
+
+function renderBankroll(d){
+  const bk = d.bankroll;
+  const box = document.createElement("div");
+  box.className = "bankroll-box";
+
+  const settled = bk.bets.filter(b => b.status === "won" || b.status === "lost");
+  const pendingCount = bk.bets.filter(b => b.status === "pending").length;
+  const roi = ((bk.current_bankroll - bk.starting_bankroll) / bk.starting_bankroll) * 100;
+  const roiClass = roi >= 0 ? "pos" : "neg";
+
+  const curve = [bk.starting_bankroll, ...settled.map(b => b.bankroll_after)];
+
+  const recentRows = settled.slice(-8).reverse().map(b => `
+    <tr>
+      <td class="match-cell">${b.home} vs ${b.away}</td>
+      <td>${b.outcome}</td>
+      <td>${b.stake.toFixed(2)}€</td>
+      <td>${b.odd.toFixed(2)}</td>
+      <td class="status-${b.status}">${b.status === "won" ? "Gewonnen" : "Verloren"}</td>
+      <td>${b.bankroll_after.toFixed(2)}€</td>
+    </tr>
+  `).join("");
+
+  box.innerHTML = `
+    <div class="bankroll-top">
+      <div class="bankroll-figures">
+        <div class="bankroll-figure">
+          <div class="label">Bankroll</div>
+          <div class="value">${bk.current_bankroll.toFixed(2)}€</div>
+        </div>
+        <div class="bankroll-figure">
+          <div class="label">Start</div>
+          <div class="value">${bk.starting_bankroll.toFixed(2)}€</div>
+        </div>
+        <div class="bankroll-figure">
+          <div class="label">ROI</div>
+          <div class="value ${roiClass}">${roi >= 0 ? "+" : ""}${roi.toFixed(1)}%</div>
+        </div>
+      </div>
+      <div class="bankroll-pending">${settled.length} abgerechnet · ${pendingCount} offen</div>
+    </div>
+    ${renderSparkline(curve)}
+    ${recentRows ? `<table class="bet-log"><thead><tr>
+        <th>Match</th><th>Tipp</th><th>Einsatz</th><th>Quote</th><th>Ergebnis</th><th>Bankroll danach</th>
+      </tr></thead><tbody>${recentRows}</tbody></table>` : ""}
+  `;
+  return box;
+}
+
 function renderTabPanel(tabId){
   const d = DATA[tabId];
   const panel = document.createElement("div");
   panel.className = "tab-panel";
   panel.id = "panel-" + tabId;
+
+  panel.appendChild(renderBankroll(d));
 
   const metaRow = document.createElement("div");
   metaRow.className = "meta-row";
