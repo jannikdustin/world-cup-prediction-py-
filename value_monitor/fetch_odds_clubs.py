@@ -63,7 +63,7 @@ def fetch_league(sport_key):
         return [], None
 
 
-def average_1x2(event, league_name):
+def average_1x2(event, sport_key, league_name):
     home_team = event.get("home_team")
     away_team = event.get("away_team")
     home_odds, draw_odds, away_odds = [], [], []
@@ -88,6 +88,7 @@ def average_1x2(event, league_name):
     avg = lambda lst: sum(lst) / len(lst)
     return {
         "home": home_team,
+        "sport_key": sport_key,
         "away": away_team,
         "league": league_name,
         "commence_time": event.get("commence_time"),
@@ -108,7 +109,7 @@ def main():
         print(f"  {len(events)} Events, Kontingent verbleibend: {remaining}")
 
         for event in events:
-            row = average_1x2(event, league_name)
+            row = average_1x2(event, sport_key, league_name)
             if row:
                 all_matches.append(row)
 
