@@ -513,11 +513,21 @@ function renderEvDistChart(canvas, matches){
 }
 
 function initTabCharts(tabId, d, s){
-  if(charts[tabId] || !HAS_CHART) return;
+  if(charts[tabId]) return;
   charts[tabId] = true;
+
   const bkCanvas = document.getElementById("chart-bankroll-" + tabId);
   const wlCanvas = document.getElementById("chart-winloss-" + tabId);
   const evCanvas = document.getElementById("chart-evdist-" + tabId);
+
+  if(!HAS_CHART){
+    // Chart.js-CDN nicht geladen (langsames Netz, Content-Blocker o.ae.) --
+    // klare Meldung statt stillschweigend leerer Boxen.
+    const msg = '<div class="chart-empty">Diagramm-Bibliothek konnte nicht geladen werden (CDN nicht erreichbar).</div>';
+    [bkCanvas, wlCanvas, evCanvas].forEach(c => { if(c) c.parentElement.innerHTML = msg; });
+    return;
+  }
+
   if(bkCanvas) renderBankrollChart(bkCanvas, d.bankroll, s);
   if(wlCanvas) renderWinLossChart(wlCanvas, s);
   if(evCanvas) renderEvDistChart(evCanvas, d.matches);
