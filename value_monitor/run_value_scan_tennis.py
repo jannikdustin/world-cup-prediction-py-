@@ -47,6 +47,7 @@ if REPO_ROOT not in sys.path:
 
 try:
     from value_oracle import analyze_value
+    import bankroll
 except ImportError as e:
     print(f"FEHLER beim Import: {e}", file=sys.stderr)
     print("value_oracle.py muss im Repo-Hauptordner liegen (siehe README).", file=sys.stderr)
@@ -287,6 +288,7 @@ def main():
             "home": a_resolved,
             "away": b_resolved,
             "league": f"{m['tournament']} ({surface})",
+            "sport_key": m.get("tournament_key"),
             "commence_time": m.get("commence_time"),
             "bookmaker_count": m.get("bookmaker_count"),
             "bookmaker_margin_pct": round(margin * 100, 2),
@@ -320,6 +322,13 @@ def main():
 
     with open(RESULTS_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
+
+    ledger_path = os.path.join(HERE, "ledger_tennis.json")
+    ledger = bankroll.load_ledger(ledger_path)
+    added = bankroll.record_new_bets(ledger, results)
+    bankroll.save_ledger(ledger_path, ledger)
+    if added:
+        print(f"{added} neue Wette(n) ins Bankroll-Ledger eingetragen -> {ledger_path}")
 
     print(f"{len(results)} Matches analysiert, davon {output['value_count']} mit Value-Signal.")
     if skipped:
