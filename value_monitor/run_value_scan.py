@@ -49,6 +49,7 @@ try:
     from simulation import match_probabilities, set_goal_model
     from worldcup2026 import WC2026_TEAMS, find_team
     from value_oracle import analyze_value
+    import bankroll
 except ImportError as e:
     print(f"FEHLER beim Import: {e}", file=sys.stderr)
     print("Diese Datei muss im world-cup-prediction-py Ordner liegen, "
@@ -131,6 +132,7 @@ def main():
         results.append({
             "home": home_team.name,
             "away": away_team.name,
+            "sport_key": "soccer_fifa_world_cup",
             "commence_time": m.get("commence_time"),
             "bookmaker_count": m.get("bookmaker_count"),
             "bookmaker_margin_pct": round(margin * 100, 2),
@@ -166,6 +168,13 @@ def main():
 
     with open(RESULTS_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
+
+    ledger_path = os.path.join(HERE, "ledger_wm.json")
+    ledger = bankroll.load_ledger(ledger_path)
+    added = bankroll.record_new_bets(ledger, results)
+    bankroll.save_ledger(ledger_path, ledger)
+    if added:
+        print(f"{added} neue Wette(n) ins Bankroll-Ledger eingetragen -> {ledger_path}")
 
     print(f"{len(results)} Spiele analysiert, davon {output['value_count']} mit Value-Signal.")
     if skipped:
