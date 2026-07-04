@@ -28,6 +28,7 @@ from datetime import datetime, timezone
 
 STARTING_BANKROLL = 1000.0
 EV_THRESHOLD_PCT = 3.0  # nur Signale oberhalb dieser EV-Schwelle werden "gesetzt"
+MIN_ODD = 1.4  # unterhalb dieser Quote wird NIE gesetzt, auch bei Value
 
 # Odds-API-Scores-Endpoint kann nur bis zu 3 Tage zurueckblicken -- Wetten,
 # die laenger als das offen sind (z.B. weil der Workflow mal ausgefallen
@@ -87,6 +88,10 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
     - nur Prematch (commence_time noch in der Zukunft) -- laufende Spiele
       werden ignoriert, auch wenn sie gerade Value zeigen
     - nur EV > EV_THRESHOLD_PCT
+    - nur Quote >= MIN_ODD (aktuell 1.4) -- auch bei Value wird bei sehr
+      niedrigen Quoten NICHT gesetzt (zu wenig Ertrag fuer das Risiko,
+      und kleine Modellfehler wiegen bei knappen Favoriten-Quoten prozentual
+      staerker)
     - maximal EINE Wette pro Spiel insgesamt (siehe _bet_id), unabhaengig
       davon, ob sich der Value-Pick zwischen zwei Laeufen aendert
     - laeuft der Workflow 2x/Tag, wird ein Spiel, das im Morgenlauf schon
@@ -112,6 +117,8 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
         outcome = next((o for o in m["outcomes"] if o["label"] == m["best_outcome"]), None)
         if outcome is None or outcome["kelly_pct"] <= 0:
             continue
+        if outcome["odd"] < MIN_ODD:
+            continue  # Value vorhanden, aber Quote zu niedrig -> nicht setzen
 
         stake = ledger["current_bankroll"] * (outcome["kelly_pct"] / 100.0)
         stake = max(0.0, min(stake, ledger["current_bankroll"]))  # nie mehr als vorhanden
