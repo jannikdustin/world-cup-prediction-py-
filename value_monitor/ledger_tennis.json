@@ -1,5 +1,42 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 1000.0,
-  "bets": []
+  "current_bankroll": 781.29,
+  "bets": [
+    {
+      "id": "eb06f4034537712c",
+      "placed_at": "2026-07-05T19:47:52.093567+00:00",
+      "home": "Alex de Minaur",
+      "away": "Flavio Cobolli",
+      "league": "ATP Wimbledon (Grass)",
+      "sport_key": "tennis_atp_wimbledon",
+      "commence_time": "2026-07-06T12:00:00Z",
+      "outcome": "Sieg Flavio Cobolli",
+      "odd": 4.013,
+      "ev_pct": 47.8,
+      "kelly_pct": 15.9,
+      "stake": 159.0,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "6d928ee15542503d",
+      "placed_at": "2026-07-05T19:47:52.093583+00:00",
+      "home": "Jiri Lehecka",
+      "away": "Alexander Zverev",
+      "league": "ATP Wimbledon (Grass)",
+      "sport_key": "tennis_atp_wimbledon",
+      "commence_time": "2026-07-06T16:30:00Z",
+      "outcome": "Sieg Jiri Lehecka",
+      "odd": 3.449,
+      "ev_pct": 17.3,
+      "kelly_pct": 7.1,
+      "stake": 59.71,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    }
+  ]
 }
