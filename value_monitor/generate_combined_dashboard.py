@@ -14,9 +14,14 @@ Start:
 
 import json
 import os
+import sys
+import urllib.error
+import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_PATH = os.path.join(HERE, "combined_dashboard.html")
+
+CHARTJS_CDN_URL = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"
 
 SOURCES = [
     ("wm", "WM 2026", os.path.join(HERE, "results.json"), os.path.join(HERE, "ledger_wm.json")),
@@ -39,6 +44,40 @@ def load_ledger_or_empty(path):
         return json.load(f)
 
 
+def fetch_chartjs_source():
+    """Laedt Chart.js EINMALIG beim Bauen des Dashboards herunter, um es
+    direkt ins HTML einzubetten, statt sich beim Betrachten der Seite auf
+    ein CDN zu verlassen.
+
+    Grund: manche Netzwerke/Browser (Content-Blocker in Safari, restriktive
+    DNS-Resolver, Firmen-/Schulnetzwerke) blockieren cdnjs.cloudflare.com
+    beim BETRACHTER der Seite, auch wenn der Download beim BAUEN (auf
+    GitHub-Actions-Servern, mit normalem, ungefiltertem Internetzugang)
+    problemlos funktioniert. Mit Einbettung ist das fertige Dashboard
+    komplett eigenstaendig -- keine Laufzeit-Abhaengigkeit von einem CDN,
+    die Charts funktionieren unabhaengig davon, was im Netzwerk des
+    Betrachters gerade blockiert wird.
+
+    Schlaegt der Download ausnahmsweise fehl (z.B. cdnjs down), wird auf
+    eine <script src="..."> Einbindung zur Laufzeit zurueckgefallen --
+    weniger zuverlaessig, aber immer noch besser als gar nichts.
+    """
+    try:
+        req = urllib.request.Request(CHARTJS_CDN_URL, headers={"User-Agent": "value-monitor-build/1.0"})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            source = resp.read().decode("utf-8")
+        # Kommentarzeile am Ende verweist auf eine externe .map-Datei, die
+        # beim Einbetten nicht mitkommt -- harmlos, aber wir schneiden sie
+        # ab, damit die Browser-Konsole nicht mit einem 404 dafuer vollmuellt.
+        source = source.split("//# sourceMappingURL=")[0]
+        print(f"Chart.js eingebettet ({len(source) // 1024} KB).")
+        return source
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as e:
+        print(f"WARNUNG: Chart.js konnte beim Bauen nicht heruntergeladen werden ({e}). "
+              f"Falle auf CDN-Einbindung zur Laufzeit zurueck.", file=sys.stderr)
+        return None
+
+
 def main():
     data_by_tab = {}
     for tab_id, label, results_path, ledger_path in SOURCES:
@@ -47,7 +86,15 @@ def main():
         data_by_tab[tab_id] = {"label": label, **results, "bankroll": ledger}
 
     data_json = json.dumps(data_by_tab, ensure_ascii=False)
-    html = HTML_TEMPLATE.replace("__DATA_JSON__", data_json)
+
+    chartjs_source = fetch_chartjs_source()
+    if chartjs_source:
+        chartjs_tag = f'<script>\n{chartjs_source}\n</script>'
+    else:
+        chartjs_tag = f'<script src="{CHARTJS_CDN_URL}"></script>'
+
+    html = HTML_TEMPLATE.replace("__CHARTJS_TAG__", chartjs_tag)
+    html = html.replace("__DATA_JSON__", data_json)
 
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         f.write(html)
@@ -64,7 +111,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+__CHARTJS_TAG__
 <style>
   :root{
     --void: #090c11;
