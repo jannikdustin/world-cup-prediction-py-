@@ -121,7 +121,19 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
       geloggt wurde, im Abendlauf uebersprungen, selbst wenn dort ein
       anderer Ausgang die bessere EV zeigt
     """
-    known_ids = {b["id"] for b in ledger["bets"]}
+    # WICHTIG: Die IDs zur Laufzeit aus den Wett-Daten NEU berechnen statt
+    # die gespeicherten "id"-Felder zu verwenden. Grund: die ID-Formel hat
+    # sich schon einmal geaendert (volle Anstosszeit -> nur Datum) -- alte
+    # Ledger-Eintraege tragen IDs nach der alten Formel, und ein Vergleich
+    # "neu berechnete ID gegen gespeicherte alte ID" schlaegt dann IMMER fehl,
+    # womit die Dopplungs-Erkennung fuer alle Alt-Eintraege wirkungslos wird
+    # (genau das hat erneute Doppel-Einsaetze verursacht). Durch Neuberechnung
+    # hier ist die Erkennung unabhaengig davon, mit welcher Formel-Version
+    # ein Eintrag urspruenglich gespeichert wurde.
+    known_ids = {
+        _bet_id(b["home"], b["away"], b.get("commence_time"))
+        for b in ledger["bets"]
+    }
     added = 0
 
     for m in matches:
@@ -176,4 +188,3 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
         added += 1
 
     return added
-
