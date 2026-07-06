@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 207.25,
+  "current_bankroll": 192.74,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -159,6 +159,24 @@
       "ev_pct": 3.6,
       "kelly_pct": 1.9,
       "stake": 4.01,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "258ef161c86fe898",
+      "placed_at": "2026-07-06T19:40:24.009157+00:00",
+      "home": "Jiri Lehecka",
+      "away": "Alexander Zverev",
+      "league": "ATP Wimbledon (Grass)",
+      "sport_key": "tennis_atp_wimbledon",
+      "commence_time": "2026-07-06T20:01:17Z",
+      "outcome": "Sieg Jiri Lehecka",
+      "odd": 3.442,
+      "ev_pct": 17.1,
+      "kelly_pct": 7.0,
+      "stake": 14.51,
       "status": "pending",
       "settled_at": null,
       "payout": null,
