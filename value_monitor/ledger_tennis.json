@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 429.3,
+  "current_bankroll": 422.0,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -69,6 +69,24 @@
       "ev_pct": 23.4,
       "kelly_pct": 43.0,
       "stake": 323.86,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "8ad48f9d7e832e1b",
+      "placed_at": "2026-07-06T11:40:47.252226+00:00",
+      "home": "Grigor Dimitrov",
+      "away": "Arthur Fery",
+      "league": "ATP Wimbledon (Grass)",
+      "sport_key": "tennis_atp_wimbledon",
+      "commence_time": "2026-07-06T14:30:00Z",
+      "outcome": "Sieg Arthur Fery",
+      "odd": 2.904,
+      "ev_pct": 3.2,
+      "kelly_pct": 1.7,
+      "stake": 7.3,
       "status": "pending",
       "settled_at": null,
       "payout": null,
