@@ -119,9 +119,22 @@ def settle_ledger(ledger_path):
     for b in due:
         commence = datetime.fromisoformat(b["commence_time"].replace("Z", "+00:00"))
         age_days = (now - commence).days
+        match_label = f"{b['home']} vs {b['away']} ({b.get('sport_key')})"
 
         scores = scores_by_sport.get(b.get("sport_key"), [])
         entry = find_score_entry(scores, b["home"], b["away"])
+
+        if entry is None:
+            available = [f"{s.get('home_team')} vs {s.get('away_team')}" for s in scores[:15]]
+            print(f"  UEBERSPRUNGEN: {match_label} -- kein Score-Eintrag gefunden "
+                  f"({len(scores)} Events insgesamt von der API erhalten). "
+                  f"Moeglich: Namensabgleich zwischen Odds- und Scores-Endpoint "
+                  f"weicht ab, oder Event fehlt (noch) in der Scores-Antwort.")
+            print(f"    Events, die die API tatsaechlich zurueckgegeben hat: {available}")
+        elif not entry.get("completed"):
+            print(f"  UEBERSPRUNGEN: {match_label} -- Event gefunden, aber "
+                  f"'completed' ist noch nicht true (API-Status: "
+                  f"completed={entry.get('completed')}, scores={entry.get('scores')}).")
 
         if entry is None or not entry.get("completed"):
             if age_days > bankroll.MAX_SETTLEMENT_WINDOW_DAYS:
@@ -135,10 +148,13 @@ def settle_ledger(ledger_path):
                 b["payout"] = b["stake"]  # Einsatz zurueckerstattet
                 b["bankroll_after"] = ledger["current_bankroll"]
                 voided_count += 1
+                print(f"    -> nach {age_days} Tagen ausserhalb des Zeitfensters, storniert.")
             continue  # noch nicht faellig / noch nicht completed, naechstes Mal erneut pruefen
 
         winner = determine_winner(entry, b["home"], b["away"])
         if winner is None:
+            print(f"  UEBERSPRUNGEN: {match_label} -- 'completed' ist true, aber "
+                  f"Sieger nicht auswertbar. Rohdaten scores-Feld: {entry.get('scores')}")
             continue  # Score-Format nicht auswertbar, spaeter erneut versuchen
 
         won = (
