@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 554.79,
+  "current_bankroll": 1220.47,
   "bets": [
     {
       "id": "3b264818fac04cc4",
@@ -33,10 +33,10 @@
       "ev_pct": 45.7,
       "kelly_pct": 30.1,
       "stake": 264.58,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-07-06T09:43:10.832928+00:00",
+      "payout": 665.68,
+      "bankroll_after": 1220.47
     },
     {
       "id": "4cc5493c698b2549",
