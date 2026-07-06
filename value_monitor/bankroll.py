@@ -176,3 +176,4 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
         added += 1
 
     return added
+
