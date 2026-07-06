@@ -10,6 +10,17 @@ on:
     - cron: "0 1 * * *"
   workflow_dispatch: {}   # erlaubt manuellen Start ueber den "Run workflow" Button
 
+# WICHTIG: verhindert, dass zwei Laeufe gleichzeitig aktiv sind. Ohne das
+# koennen zwei parallele Laeufe (z.B. manuell gestartet, waehrend der naechtliche
+# Lauf noch aktiv ist) sich gegenseitig nicht sehen, beide "neue" Wetten
+# eintragen und beim Zurueckschreiben ins Repo gegenseitig ueberschreiben --
+# genau das hat die Bankroll-Dopplungen verursacht. cancel-in-progress: false
+# heisst: ein neuer Trigger WARTET, bis der laufende Lauf fertig ist, statt
+# ihn abzubrechen (damit keine bereits bezahlten API-Calls verschwendet werden).
+concurrency:
+  group: value-monitor
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pages: write
@@ -73,6 +84,11 @@ jobs:
           git config user.email "actions@github.com"
           git add value_monitor/ledger_*.json
           git diff --staged --quiet && echo "Keine Ledger-Aenderungen." || git commit -m "Bankroll-Ledger aktualisieren [skip ci]"
+          # Zusaetzliche Absicherung neben der concurrency-Sperre oben: falls doch
+          # einmal ein anderer Commit zwischenzeitlich gepusht wurde, hier
+          # dagegen rebasen statt den Push fehlschlagen zu lassen (und damit
+          # unbemerkt einen aelteren Ledger-Stand stehen zu lassen).
+          git pull --rebase origin HEAD || echo "Rebase nicht noetig/fehlgeschlagen, versuche Push trotzdem."
           git push
 
       - name: Pages Artefakt hochladen
@@ -90,3 +106,5 @@ jobs:
       - name: Auf GitHub Pages veroeffentlichen
         id: deployment
         uses: actions/deploy-pages@v4
+
+
