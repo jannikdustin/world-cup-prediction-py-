@@ -50,13 +50,23 @@ MAX_SETTLEMENT_WINDOW_DAYS = 3
 
 
 def _bet_id(home, away, commence_time):
-    """Stabile ID PRO SPIEL (nicht pro Tipp!). Bewusst OHNE outcome_label:
-    wuerde sich zwischen zwei taeglichen Laeufen der Quotenstand so
-    verschieben, dass ein anderer Ausgang zum Value-Pick wird, soll das
-    NICHT als zweite Wette auf dasselbe Spiel gezaehlt werden. Ein Spiel
-    bekommt maximal einen Eintrag im Ledger, so wie es beim allerersten
-    Erscheinen als Value-Signal gesehen wurde."""
-    raw = f"{home}|{away}|{commence_time}"
+    """Stabile ID PRO SPIEL (nicht pro Tipp!) UND NUR NACH TAG, nicht nach
+    exakter Uhrzeit. Grund: gerade bei Tennis ist die Anstosszeit anfangs nur
+    grob geplant und wird im Tagesverlauf praezisiert (vorheriges Match auf
+    demselben Platz dauert kuerzer/laenger als erwartet) -- dieselbe Partie
+    kann zwischen zwei taeglichen Laeufen mit leicht verschobener Uhrzeit
+    auftauchen (z.B. 16:21 vs. 16:30). Wuerde die exakte Uhrzeit Teil der ID
+    sein, wuerde das als "neues" Spiel erkannt und ein zweites Mal bestaked.
+    Auf Tagesebene zu dedupen loest das, ohne eine echte Neuauflage derselben
+    Partie an einem SPAETEREN Tag (anderes Turnier, Monate spaeter) faelschlich
+    zu unterdruecken.
+
+    Bewusst OHNE outcome_label: wuerde sich zwischen zwei taeglichen Laeufen
+    der Quotenstand so verschieben, dass ein anderer Ausgang zum Value-Pick
+    wird, soll das NICHT als zweite Wette auf dasselbe Spiel gezaehlt werden.
+    """
+    date_only = (commence_time or "unbekannt")[:10]  # "YYYY-MM-DD"-Praefix
+    raw = f"{home}|{away}|{date_only}"
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
 
 
