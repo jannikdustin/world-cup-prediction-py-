@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 422.0,
+  "current_bankroll": 405.12,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -87,6 +87,24 @@
       "ev_pct": 3.2,
       "kelly_pct": 1.7,
       "stake": 7.3,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "e9fdccd4536842c1",
+      "placed_at": "2026-07-07T07:26:16.069437+00:00",
+      "home": "Flavio Cobolli",
+      "away": "Arthur Fery",
+      "league": "ATP Wimbledon (Grass)",
+      "sport_key": "tennis_atp_wimbledon",
+      "commence_time": "2026-07-08T10:00:00Z",
+      "outcome": "Sieg Arthur Fery",
+      "odd": 3.296,
+      "ev_pct": 9.2,
+      "kelly_pct": 4.0,
+      "stake": 16.88,
       "status": "pending",
       "settled_at": null,
       "payout": null,
