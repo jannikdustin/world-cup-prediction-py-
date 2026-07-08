@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 405.12,
+  "current_bankroll": 286.01,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -105,6 +105,24 @@
       "ev_pct": 9.2,
       "kelly_pct": 4.0,
       "stake": 16.88,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "52b4a44ffcf10e06",
+      "placed_at": "2026-07-08T09:46:45.858216+00:00",
+      "home": "Jannik Sinner",
+      "away": "Novak Djokovic",
+      "league": "ATP Wimbledon (Grass)",
+      "sport_key": "tennis_atp_wimbledon",
+      "commence_time": "2026-07-09T09:00:00Z",
+      "outcome": "Sieg Novak Djokovic",
+      "odd": 4.424,
+      "ev_pct": 100.6,
+      "kelly_pct": 29.4,
+      "stake": 119.11,
       "status": "pending",
       "settled_at": null,
       "payout": null,
