@@ -50,24 +50,41 @@ MAX_SETTLEMENT_WINDOW_DAYS = 3
 
 
 def _bet_id(home, away, commence_time):
-    """Stabile ID PRO SPIEL (nicht pro Tipp!) UND NUR NACH TAG, nicht nach
-    exakter Uhrzeit. Grund: gerade bei Tennis ist die Anstosszeit anfangs nur
-    grob geplant und wird im Tagesverlauf praezisiert (vorheriges Match auf
-    demselben Platz dauert kuerzer/laenger als erwartet) -- dieselbe Partie
-    kann zwischen zwei taeglichen Laeufen mit leicht verschobener Uhrzeit
-    auftauchen (z.B. 16:21 vs. 16:30). Wuerde die exakte Uhrzeit Teil der ID
-    sein, wuerde das als "neues" Spiel erkannt und ein zweites Mal bestaked.
-    Auf Tagesebene zu dedupen loest das, ohne eine echte Neuauflage derselben
-    Partie an einem SPAETEREN Tag (anderes Turnier, Monate spaeter) faelschlich
-    zu unterdruecken.
-
-    Bewusst OHNE outcome_label: wuerde sich zwischen zwei taeglichen Laeufen
-    der Quotenstand so verschieben, dass ein anderer Ausgang zum Value-Pick
-    wird, soll das NICHT als zweite Wette auf dasselbe Spiel gezaehlt werden.
-    """
-    date_only = (commence_time or "unbekannt")[:10]  # "YYYY-MM-DD"-Praefix
+    """Stabile ID pro Spiel -- nur noch als Referenz/Anzeige im Ledger.
+    Die Dopplungs-Erkennung laeuft NICHT mehr ueber diese ID (siehe
+    _same_match_exists), weil sich Anstosszeiten bei Tennis auch ueber
+    Tagesgrenzen verschieben koennen (z.B. Halbfinale von Do auf Fr wegen
+    Regen) und jede zeitbasierte ID dann eine neue Wette vortaeuscht."""
+    date_only = (commence_time or "unbekannt")[:10]
     raw = f"{home}|{away}|{date_only}"
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
+
+
+DEDUPE_WINDOW_DAYS = 3
+
+
+def _same_match_exists(ledger, home, away, commence_time):
+    """True, wenn im Ledger bereits eine Wette auf dieselbe Paarung liegt,
+    deren Anstosszeit hoechstens DEDUPE_WINDOW_DAYS entfernt ist. Faengt
+    damit sowohl Uhrzeit-Verschiebungen am selben Tag als auch
+    Verschiebungen ueber die Tagesgrenze (Regen, Zeitplanaenderung) ab.
+    Dieselben zwei Kontrahenten treffen im Profisport praktisch nie zweimal
+    innerhalb von 3 Tagen aufeinander -- eine echte Neuauflage (anderes
+    Turnier, Rueckspiel Wochen spaeter) liegt immer ausserhalb des Fensters
+    und wird weiterhin als neues Spiel erkannt."""
+    try:
+        new_dt = datetime.fromisoformat(commence_time.replace("Z", "+00:00"))
+    except (ValueError, AttributeError):
+        return False
+    for b in ledger["bets"]:
+        if b["home"] == home and b["away"] == away and b.get("commence_time"):
+            try:
+                old_dt = datetime.fromisoformat(b["commence_time"].replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if abs((new_dt - old_dt).total_seconds()) <= DEDUPE_WINDOW_DAYS * 86400:
+                return True
+    return False
 
 
 def _is_prematch(commence_time):
@@ -115,25 +132,20 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
       niedrigen Quoten NICHT gesetzt (zu wenig Ertrag fuer das Risiko,
       und kleine Modellfehler wiegen bei knappen Favoriten-Quoten prozentual
       staerker)
-    - maximal EINE Wette pro Spiel insgesamt (siehe _bet_id), unabhaengig
+    - maximal EINE Wette pro Spiel insgesamt: dieselbe Paarung mit
+      Anstosszeit innerhalb von DEDUPE_WINDOW_DAYS (3 Tage) gilt als
+      dasselbe Spiel, auch wenn die Zeit sich verschiebt (siehe
+      _same_match_exists), unabhaengig
       davon, ob sich der Value-Pick zwischen zwei Laeufen aendert
     - laeuft der Workflow 2x/Tag, wird ein Spiel, das im Morgenlauf schon
       geloggt wurde, im Abendlauf uebersprungen, selbst wenn dort ein
       anderer Ausgang die bessere EV zeigt
     """
-    # WICHTIG: Die IDs zur Laufzeit aus den Wett-Daten NEU berechnen statt
-    # die gespeicherten "id"-Felder zu verwenden. Grund: die ID-Formel hat
-    # sich schon einmal geaendert (volle Anstosszeit -> nur Datum) -- alte
-    # Ledger-Eintraege tragen IDs nach der alten Formel, und ein Vergleich
-    # "neu berechnete ID gegen gespeicherte alte ID" schlaegt dann IMMER fehl,
-    # womit die Dopplungs-Erkennung fuer alle Alt-Eintraege wirkungslos wird
-    # (genau das hat erneute Doppel-Einsaetze verursacht). Durch Neuberechnung
-    # hier ist die Erkennung unabhaengig davon, mit welcher Formel-Version
-    # ein Eintrag urspruenglich gespeichert wurde.
-    known_ids = {
-        _bet_id(b["home"], b["away"], b.get("commence_time"))
-        for b in ledger["bets"]
-    }
+    # WICHTIG: Die Dopplungs-Erkennung laeuft ueber _same_match_exists
+    # (Paarung + Anstosszeit innerhalb von DEDUPE_WINDOW_DAYS), NICHT ueber
+    # gespeicherte IDs. IDs haben sich als fragil erwiesen: Formelwechsel
+    # entwertete Alt-Eintraege, und Tagesgrenzen-Verschiebungen (Tennis,
+    # Regen) erzeugten trotzdem Dopplungen.
     added = 0
 
     for m in matches:
@@ -144,9 +156,8 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
         if not _is_prematch(m.get("commence_time")):
             continue  # laeuft schon / Anstosszeit unbekannt -> nicht beruecksichtigen
 
-        bet_id = _bet_id(m["home"], m["away"], m.get("commence_time"))
-        if bet_id in known_ids:
-            continue  # dieses SPIEL wurde schon geloggt (unabhaengig vom Tipp)
+        if _same_match_exists(ledger, m["home"], m["away"], m.get("commence_time")):
+            continue  # dieses SPIEL wurde schon bestaked (ggf. mit verschobener Zeit)
 
         # Zugehoerige Outcome-Zeile fuer Kelly/Quote finden
         outcome = next((o for o in m["outcomes"] if o["label"] == m["best_outcome"]), None)
@@ -160,7 +171,7 @@ def record_new_bets(ledger, matches, sport_key_field="sport_key"):
         stake = round(stake, 2)
 
         ledger["bets"].append({
-            "id": bet_id,
+            "id": _bet_id(m["home"], m["away"], m.get("commence_time")),
             "placed_at": datetime.now(timezone.utc).isoformat(),
             "home": m["home"],
             "away": m["away"],
