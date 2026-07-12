@@ -304,6 +304,19 @@ def settle_ledger(ledger_path):
                       f"{'GEWONNEN' if won else 'verloren'}.")
 
     # ---- Fussball ueber The Odds API Scores ----
+    # AUSNAHME WM-K.o.-Phase: Der 1X2-Markt wird auf 90 Minuten abgerechnet,
+    # The Odds API liefert aber nur den Endstand INKLUSIVE Verlaengerung --
+    # ein Spiel, das nach 90 Min. remis stand und in der Verlaengerung
+    # entschieden wurde, ist damit nicht korrekt abrechenbar (weder Remis-
+    # noch Siegwetten). Bis eine Quelle mit echtem 90-Minuten-Ergebnis
+    # integriert ist, bleiben WM-Wetten bewusst offen (kein Void).
+    wm_paused = [b for b in soccer_due if b.get("sport_key") == "soccer_fifa_world_cup"]
+    soccer_due = [b for b in soccer_due if b.get("sport_key") != "soccer_fifa_world_cup"]
+    for b in wm_paused:
+        print(f"  PAUSIERT: {b['home']} vs {b['away']} -- WM-K.o.-Spiel, 90-Minuten-"
+              f"Ergebnis ueber The Odds API nicht ermittelbar (Verlaengerungs-Problem). "
+              f"Bleibt offen bis zur manuellen Abrechnung oder Quellen-Integration.")
+
     if soccer_due:
         sport_keys = sorted({b["sport_key"] for b in soccer_due if b.get("sport_key")})
         scores_by_sport = {}
