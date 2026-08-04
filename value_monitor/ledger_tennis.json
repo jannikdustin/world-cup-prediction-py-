@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 10.72,
+  "current_bankroll": 640.4,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -213,10 +213,10 @@
       "ev_pct": 22.4,
       "kelly_pct": 31.6,
       "stake": 342.2,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 584.82,
+      "bankroll_after": 594.34
     },
     {
       "id": "ff29862add5112d1",
@@ -231,10 +231,10 @@
       "ev_pct": 21.8,
       "kelly_pct": 39.1,
       "stake": 289.61,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 0.0,
+      "bankroll_after": 594.34
     },
     {
       "id": "8057e701fb9d0c85",
@@ -339,10 +339,10 @@
       "ev_pct": 9.4,
       "kelly_pct": 9.7,
       "stake": 13.91,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 27.29,
+      "bankroll_after": 621.63
     },
     {
       "id": "a32e175c0c6a5d8b",
@@ -375,10 +375,10 @@
       "ev_pct": 6.4,
       "kelly_pct": 3.6,
       "stake": 4.14,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 0.0,
+      "bankroll_after": 621.63
     },
     {
       "id": "01c41800c6e3f5b6",
@@ -393,10 +393,10 @@
       "ev_pct": 5.2,
       "kelly_pct": 2.3,
       "stake": 2.55,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 0.0,
+      "bankroll_after": 621.63
     },
     {
       "id": "499ad83d5bd07299",
@@ -411,10 +411,10 @@
       "ev_pct": 5.0,
       "kelly_pct": 4.8,
       "stake": 5.2,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 0.0,
+      "bankroll_after": 621.63
     },
     {
       "id": "041674eec894936b",
@@ -519,10 +519,10 @@
       "ev_pct": 20.3,
       "kelly_pct": 28.8,
       "stake": 9.35,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 15.92,
+      "bankroll_after": 637.55
     },
     {
       "id": "bf2bfcd4b5387032",
@@ -591,6 +591,24 @@
       "ev_pct": 10.2,
       "kelly_pct": 12.9,
       "stake": 1.59,
+      "status": "won",
+      "settled_at": "2026-08-04T04:16:52.561486+00:00",
+      "payout": 2.85,
+      "bankroll_after": 640.4
+    },
+    {
+      "id": "2c3e725ab7bf996a",
+      "placed_at": "2026-08-04T04:16:52.454790+00:00",
+      "home": "Martin Damm",
+      "away": "Stefanos Tsitsipas",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-04T15:00:00Z",
+      "outcome": "Sieg Stefanos Tsitsipas",
+      "odd": 1.558,
+      "ev_pct": 6.3,
+      "kelly_pct": 11.2,
+      "stake": 1.2,
       "status": "pending",
       "settled_at": null,
       "payout": null,
