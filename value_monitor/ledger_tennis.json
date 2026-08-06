@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 1232.14,
+  "current_bankroll": 596.64,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -267,10 +267,10 @@
       "ev_pct": 18.8,
       "kelly_pct": 26.2,
       "stake": 109.91,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 466.15
     },
     {
       "id": "42d1e84bea657822",
@@ -285,10 +285,10 @@
       "ev_pct": 17.6,
       "kelly_pct": 42.1,
       "stake": 130.34,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 466.15
     },
     {
       "id": "34cc4164225027b4",
@@ -321,10 +321,10 @@
       "ev_pct": 9.7,
       "kelly_pct": 12.5,
       "stake": 20.48,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 36.45,
+      "bankroll_after": 502.6
     },
     {
       "id": "3a88258dfed1e82c",
@@ -429,10 +429,10 @@
       "ev_pct": 3.5,
       "kelly_pct": 5.7,
       "stake": 5.88,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 502.6
     },
     {
       "id": "8ce7f18d36658383",
@@ -447,10 +447,10 @@
       "ev_pct": 49.3,
       "kelly_pct": 34.5,
       "stake": 33.57,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 502.6
     },
     {
       "id": "5944692c0d3ab767",
@@ -465,10 +465,10 @@
       "ev_pct": 25.3,
       "kelly_pct": 19.8,
       "stake": 12.62,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 502.6
     },
     {
       "id": "23769f84d0db1393",
@@ -483,10 +483,10 @@
       "ev_pct": 24.5,
       "kelly_pct": 22.7,
       "stake": 11.6,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 502.6
     },
     {
       "id": "b16171093877b840",
@@ -537,10 +537,10 @@
       "ev_pct": 16.6,
       "kelly_pct": 33.0,
       "stake": 7.62,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 11.45,
+      "bankroll_after": 514.05
     },
     {
       "id": "018c5b9f46ce0646",
@@ -555,10 +555,10 @@
       "ev_pct": 13.4,
       "kelly_pct": 4.8,
       "stake": 0.74,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 2.83,
+      "bankroll_after": 516.88
     },
     {
       "id": "c75c22d075e7e556",
@@ -645,10 +645,10 @@
       "ev_pct": 34.4,
       "kelly_pct": 23.0,
       "stake": 111.06,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 516.88
     },
     {
       "id": "78bde137d955f76c",
@@ -681,10 +681,10 @@
       "ev_pct": 20.8,
       "kelly_pct": 38.6,
       "stake": 130.6,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 516.88
     },
     {
       "id": "f6ac9ebd5fe92d33",
@@ -699,10 +699,10 @@
       "ev_pct": 14.2,
       "kelly_pct": 16.1,
       "stake": 33.45,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 63.05,
+      "bankroll_after": 579.93
     },
     {
       "id": "c0e59f51ca9cce4e",
@@ -717,10 +717,10 @@
       "ev_pct": 7.3,
       "kelly_pct": 5.6,
       "stake": 9.76,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 579.93
     },
     {
       "id": "92647f6e80623cfd",
@@ -735,10 +735,10 @@
       "ev_pct": 4.3,
       "kelly_pct": 1.6,
       "stake": 2.63,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 579.93
     },
     {
       "id": "1275723675a15a38",
@@ -753,10 +753,10 @@
       "ev_pct": 3.3,
       "kelly_pct": 7.0,
       "stake": 11.33,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 16.71,
+      "bankroll_after": 596.64
     },
     {
       "id": "331ca804a898b89a",
@@ -771,6 +771,60 @@
       "ev_pct": 3.2,
       "kelly_pct": 2.3,
       "stake": 3.46,
+      "status": "lost",
+      "settled_at": "2026-08-06T04:15:28.362244+00:00",
+      "payout": 0.0,
+      "bankroll_after": 596.64
+    },
+    {
+      "id": "9308757d77f616b1",
+      "placed_at": "2026-08-06T04:15:28.246208+00:00",
+      "home": "Rafael Jodar",
+      "away": "Lorenzo Musetti",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-06T23:00:00Z",
+      "outcome": "Sieg Lorenzo Musetti",
+      "odd": 2.577,
+      "ev_pct": 59.0,
+      "kelly_pct": 37.4,
+      "stake": 460.82,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "e8a9d711be40d753",
+      "placed_at": "2026-08-06T04:15:28.246226+00:00",
+      "home": "Yannick Hanfmann",
+      "away": "Nuno Borges",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-06T17:40:00Z",
+      "outcome": "Sieg Yannick Hanfmann",
+      "odd": 2.246,
+      "ev_pct": 26.1,
+      "kelly_pct": 21.0,
+      "stake": 161.98,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "42e7eaa0fc47b6e8",
+      "placed_at": "2026-08-06T04:15:28.246241+00:00",
+      "home": "Jiri Lehecka",
+      "away": "Alexander Blockx",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-06T22:00:00Z",
+      "outcome": "Sieg Jiri Lehecka",
+      "odd": 1.481,
+      "ev_pct": 11.3,
+      "kelly_pct": 23.5,
+      "stake": 143.19,
       "status": "pending",
       "settled_at": null,
       "payout": null,
