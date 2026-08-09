@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 467.56,
+  "current_bankroll": 1013.81,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -843,10 +843,10 @@
       "ev_pct": 32.0,
       "kelly_pct": 16.5,
       "stake": 98.45,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-09T03:04:35.509254+00:00",
+      "payout": 290.13,
+      "bankroll_after": 747.4
     },
     {
       "id": "e1075dac07ef11e8",
@@ -861,10 +861,10 @@
       "ev_pct": 18.8,
       "kelly_pct": 12.7,
       "stake": 63.27,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-09T03:04:35.509254+00:00",
+      "payout": 156.85,
+      "bankroll_after": 904.25
     },
     {
       "id": "57e992c098f752f8",
@@ -879,10 +879,10 @@
       "ev_pct": 6.2,
       "kelly_pct": 5.7,
       "stake": 24.79,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-09T03:04:35.509254+00:00",
+      "payout": 51.49,
+      "bankroll_after": 955.74
     },
     {
       "id": "80548510b8111cd7",
@@ -897,10 +897,10 @@
       "ev_pct": 4.2,
       "kelly_pct": 10.0,
       "stake": 41.01,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-08-09T03:04:35.509254+00:00",
+      "payout": 58.07,
+      "bankroll_after": 1013.81
     },
     {
       "id": "7d454b10da5b1863",
@@ -933,6 +933,24 @@
       "ev_pct": 19.8,
       "kelly_pct": 10.8,
       "stake": 30.94,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "73e31a80de30bada",
+      "placed_at": "2026-08-09T03:04:35.411211+00:00",
+      "home": "Botic van de Zandschulp",
+      "away": "Jakub Mensik",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-09T23:10:00Z",
+      "outcome": "Sieg Botic van de Zandschulp",
+      "odd": 3.184,
+      "ev_pct": 4.8,
+      "kelly_pct": 2.2,
+      "stake": 10.29,
       "status": "pending",
       "settled_at": null,
       "payout": null,
