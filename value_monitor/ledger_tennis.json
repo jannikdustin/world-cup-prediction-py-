@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 1013.81,
+  "current_bankroll": 644.71,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -915,10 +915,10 @@
       "ev_pct": 25.1,
       "kelly_pct": 22.4,
       "stake": 82.68,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-10T03:13:36.335878+00:00",
+      "payout": 0.0,
+      "bankroll_after": 644.71
     },
     {
       "id": "babe5ce2c0f97d4d",
@@ -933,10 +933,10 @@
       "ev_pct": 19.8,
       "kelly_pct": 10.8,
       "stake": 30.94,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-10T03:13:36.335878+00:00",
+      "payout": 0.0,
+      "bankroll_after": 644.71
     },
     {
       "id": "73e31a80de30bada",
@@ -951,6 +951,42 @@
       "ev_pct": 4.8,
       "kelly_pct": 2.2,
       "stake": 10.29,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "326856182ceb1675",
+      "placed_at": "2026-08-10T03:13:36.226076+00:00",
+      "home": "Rafael Jodar",
+      "away": "Arthur Fils",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-10T22:00:00Z",
+      "outcome": "Sieg Arthur Fils",
+      "odd": 1.931,
+      "ev_pct": 28.4,
+      "kelly_pct": 30.5,
+      "stake": 309.21,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "3fdcecf7eaf53b34",
+      "placed_at": "2026-08-10T03:13:36.226096+00:00",
+      "home": "Luciano Darderi",
+      "away": "Brandon Nakashima",
+      "league": "ATP Canadian Open (Hard)",
+      "sport_key": "tennis_atp_canadian_open",
+      "commence_time": "2026-08-11T00:00:00Z",
+      "outcome": "Sieg Brandon Nakashima",
+      "odd": 1.401,
+      "ev_pct": 3.4,
+      "kelly_pct": 8.5,
+      "stake": 59.89,
       "status": "pending",
       "settled_at": null,
       "payout": null,
