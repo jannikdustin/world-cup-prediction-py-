@@ -110,7 +110,7 @@ NAME_OVERRIDES = {
 }
 
 
-def fetch_clubelo_fixtures(max_retries=3, base_delay=5):
+def fetch_clubelo_fixtures(max_retries=4, base_delay=5):
     """Laedt Fixtures-CSV von ClubElo, mit Retry bei kurzzeitigen Verbindungs-
     problemen (clubelo.com ist manchmal kurz langsam/ueberlastet, besonders
     von GitHub-Actions-Servern aus). Gibt eine Liste von dicts zurueck."""
@@ -121,7 +121,7 @@ def fetch_clubelo_fixtures(max_retries=3, base_delay=5):
     last_error = None
     for attempt in range(1, max_retries + 1):
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with urllib.request.urlopen(req, timeout=45) as resp:
                 text = resp.read().decode("utf-8")
             break  # Erfolg, Schleife verlassen
         except (urllib.error.URLError, TimeoutError) as e:
@@ -204,23 +204,40 @@ def main():
     try:
         fixtures = fetch_clubelo_fixtures()
     except RuntimeError as e:
-        # clubelo.com war trotz Retries nicht erreichbar. Statt den ganzen
-        # Workflow (inkl. WM-Dashboard-Veroeffentlichung) abbrechen zu lassen,
-        # schreiben wir ein leeres, aber gueltiges results_clubs.json -- das
-        # Klub-Dashboard zeigt dann einfach "keine Spiele gefunden" an, bis
-        # der naechste planmaessige Lauf clubelo.com wieder erreicht.
+        # clubelo.com war trotz Retries nicht erreichbar (meist ein
+        # voruebergehender Timeout aus dem GitHub-Actions-Netz, kein echter
+        # Ausfall). In diesem Fall NICHT das bestehende results_clubs.json
+        # ueberschreiben -- sonst wuerde ein einzelner Netz-Huester den
+        # kompletten Klub-Tab (alle Ligen, nicht nur eine) bis zum naechsten
+        # geglueckten Lauf leeren. Stattdessen den letzten guten Stand
+        # stehen lassen; das Dashboard zeigt dann die Spiele des Vortags.
+        # Nur wenn ueberhaupt noch keine Datei existiert (allererster Lauf),
+        # wird ein leeres, aber gueltiges Ergebnis geschrieben, damit die
+        # nachgelagerten Schritte (Dashboard-Bau) nicht an einer fehlenden
+        # Datei scheitern.
+        #
+        # WICHTIG: In beiden Faellen wird KEINE Wette ins Ledger geschrieben
+        # (die record_new_bets-Logik unten wird durch das return gar nicht
+        # erreicht) -- ein ClubElo-Ausfall darf die Bankroll nicht anfassen.
         print(f"FEHLER: {e}", file=sys.stderr)
-        print("Schreibe leeres Ergebnis, damit der Workflow trotzdem "
-              "fortfahren kann.", file=sys.stderr)
-        output = {
-            "generated_at": datetime.now(timezone.utc).isoformat(),
-            "match_count": 0,
-            "value_count": 0,
-            "skipped": [f"clubelo.com nicht erreichbar: {e}"],
-            "matches": [],
-        }
-        with open(RESULTS_PATH, "w", encoding="utf-8") as f:
-            json.dump(output, f, ensure_ascii=False, indent=2)
+        if os.path.exists(RESULTS_PATH):
+            print("Behalte den letzten erfolgreichen results_clubs.json-Stand "
+                  "(nicht ueberschrieben). Das Dashboard zeigt weiter die "
+                  "zuletzt gefundenen Spiele, bis clubelo.com wieder "
+                  "erreichbar ist.", file=sys.stderr)
+        else:
+            print("Noch kein frueheres Ergebnis vorhanden -- schreibe einmalig "
+                  "ein leeres, gueltiges results_clubs.json, damit der "
+                  "Workflow fortfahren kann.", file=sys.stderr)
+            output = {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "match_count": 0,
+                "value_count": 0,
+                "skipped": [f"clubelo.com nicht erreichbar: {e}"],
+                "matches": [],
+            }
+            with open(RESULTS_PATH, "w", encoding="utf-8") as f:
+                json.dump(output, f, ensure_ascii=False, indent=2)
         return
 
     print(f"{len(fixtures)} anstehende Spiele bei ClubElo gefunden.")
