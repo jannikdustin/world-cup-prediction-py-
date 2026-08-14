@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 520.99,
+  "current_bankroll": 496.5,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -1365,6 +1365,24 @@
       "ev_pct": 6.6,
       "kelly_pct": 1.8,
       "stake": 0.21,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "e24bac31b6abb5f0",
+      "placed_at": "2026-08-14T09:05:20.744679+00:00",
+      "home": "Rafael Jodar",
+      "away": "Denis Shapovalov",
+      "league": "ATP Cincinnati Open (Hard)",
+      "sport_key": "tennis_atp_cincinnati_open",
+      "commence_time": "2026-08-15T14:00:00Z",
+      "outcome": "Sieg Denis Shapovalov",
+      "odd": 2.953,
+      "ev_pct": 9.1,
+      "kelly_pct": 4.7,
+      "stake": 24.49,
       "status": "pending",
       "settled_at": null,
       "payout": null,
