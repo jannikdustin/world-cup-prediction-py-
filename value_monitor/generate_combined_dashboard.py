@@ -24,7 +24,6 @@ OUT_PATH = os.path.join(HERE, "combined_dashboard.html")
 CHARTJS_CDN_URL = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"
 
 SOURCES = [
-    ("wm", "WM 2026", os.path.join(HERE, "results.json"), os.path.join(HERE, "ledger_wm.json")),
     ("clubs", "Top 5 Ligen + Europa", os.path.join(HERE, "results_clubs.json"), os.path.join(HERE, "ledger_clubs.json")),
     ("tennis", "Tennis ATP", os.path.join(HERE, "results_tennis.json"), os.path.join(HERE, "ledger_tennis.json")),
 ]
