@@ -1,4 +1,4 @@
-name: WM 2026 Value Monitor
+name: Value Monitor
 
 on:
   schedule:
@@ -40,14 +40,6 @@ jobs:
 
       - name: Abhaengigkeiten installieren
         run: pip install -r requirements.txt
-
-      - name: WM-Quoten abrufen
-        env:
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python value_monitor/fetch_odds.py
-
-      - name: WM Value-Scan ausfuehren
-        run: python value_monitor/run_value_scan.py
 
       - name: Klub-Quoten abrufen (Top 5 Ligen + Europa)
         env:
@@ -100,17 +92,32 @@ jobs:
         run: |
           python - <<'EOF'
           import json
+          import os
           from datetime import datetime, timezone
 
+          HERE = "value_monitor"
           now = datetime.now(timezone.utc)
           today = now.date()
+
+          # Robust gegen fehlende Ledger: eine nicht (mehr) vorhandene Datei
+          # -- etwa nach dem Entfernen einer Pipeline wie der WM -- wird
+          # uebersprungen statt den Job mit FileNotFoundError abzubrechen.
+          # Neue Pipelines koennen hier einfach ergaenzt werden.
+          LEDGERS = ("ledger_clubs.json", "ledger_tennis.json")
+
           count = 0
-          for name in ("ledger_wm.json", "ledger_clubs.json", "ledger_tennis.json"):
-              with open(f"value_monitor/{name}", encoding="utf-8") as f:
+          for name in LEDGERS:
+              path = os.path.join(HERE, name)
+              if not os.path.exists(path):
+                  print(f"Hinweis: {name} nicht vorhanden, wird uebersprungen.")
+                  continue
+              with open(path, encoding="utf-8") as f:
                   ledger = json.load(f)
-              for bet in ledger["bets"]:
-                  if datetime.fromisoformat(bet["placed_at"]).date() == today:
+              for bet in ledger.get("bets", []):
+                  placed = bet.get("placed_at")
+                  if placed and datetime.fromisoformat(placed).date() == today:
                       count += 1
+
           status = {
               "name": "Value Radar",
               "status": "aktiv",
@@ -135,5 +142,3 @@ jobs:
       - name: Auf GitHub Pages veroeffentlichen
         id: deployment
         uses: actions/deploy-pages@v4
-
-
