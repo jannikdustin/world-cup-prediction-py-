@@ -55,6 +55,27 @@ ODDS_PATH = os.path.join(HERE, "odds_clubs.json")
 RESULTS_PATH = os.path.join(HERE, "results_clubs.json")
 CLUBELO_FIXTURES_URL = "https://api.clubelo.com/Fixtures"
 
+# ClubElo blockt die IP-Bereiche der GitHub-Actions-Runner hart auf
+# Netzwerkebene (SYN-Pakete werden stumm verworfen -> Timeout, kein 403).
+# Direkt aus dem Runner ist api.clubelo.com daher NICHT erreichbar; das laesst
+# sich im Code nicht umgehen. Loesung: die Anfrage ueber einen Public-Reader-
+# Proxy leiten, der ClubElo von SEINER (nicht geblockten) IP aus abruft und
+# den Inhalt unveraendert durchreicht.
+#
+# CLUBELO_PROXY_TEMPLATE enthaelt genau ein "{url}", in das die Ziel-URL
+# eingesetzt wird. Standard ist r.jina.ai (kein API-Key noetig). Ueber die
+# gleichnamige Umgebungsvariable austauschbar oder -- auf "" gesetzt --
+# komplett abschaltbar (dann wird wieder direkt abgerufen, z.B. fuer lokale
+# Laeufe ausserhalb von Actions, wo ClubElo ganz normal erreichbar ist).
+DEFAULT_PROXY_TEMPLATE = "https://r.jina.ai/{url}"
+CLUBELO_PROXY_TEMPLATE = os.environ.get("CLUBELO_PROXY_TEMPLATE", DEFAULT_PROXY_TEMPLATE)
+
+# Die echte CSV beginnt exakt mit dieser Kopfzeile. Wird als Integritaets-
+# Check genutzt: gibt der Proxy Markdown, HTML oder eine Fehlerseite statt der
+# Roh-CSV zurueck, erkennen wir das hier und behandeln es als Fehlschlag,
+# statt still verfaelschte/leere Wahrscheinlichkeiten zu verarbeiten.
+CLUBELO_CSV_HEADER_PREFIX = "Date,Country,Home,Away,GD"
+
 # Manuelle Uebersetzungstabelle: Odds-API-Name -> ClubElo-Name.
 # ClubElo nutzt oft kuerzere/eigene Schreibweisen. Bei "Team nicht erkannt"
 # im Dashboard hier einfach ergaenzen (exakte ClubElo-Schreibweise steht auf
@@ -111,11 +132,21 @@ NAME_OVERRIDES = {
 
 
 def fetch_clubelo_fixtures(max_retries=4, base_delay=5):
-    """Laedt Fixtures-CSV von ClubElo, mit Retry bei kurzzeitigen Verbindungs-
-    problemen (clubelo.com ist manchmal kurz langsam/ueberlastet, besonders
-    von GitHub-Actions-Servern aus). Gibt eine Liste von dicts zurueck."""
+    """Laedt die Fixtures-CSV von ClubElo und gibt eine Liste von dicts zurueck.
+
+    Ruft ClubElo bei gesetztem CLUBELO_PROXY_TEMPLATE ueber einen Public-Reader-
+    Proxy ab (noetig, weil ClubElo die Actions-Runner-IPs blockt). Die
+    durchgereichte Antwort wird gegen die echte CSV-Kopfzeile geprueft, damit
+    ein defekter/umformatierender Proxy nicht still falsche Daten einschleust.
+    Retry bei kurzzeitigen Verbindungsproblemen."""
+    if CLUBELO_PROXY_TEMPLATE:
+        fetch_url = CLUBELO_PROXY_TEMPLATE.format(url=CLUBELO_FIXTURES_URL)
+        print(f"  Abruf ueber Proxy: {fetch_url}", file=sys.stderr)
+    else:
+        fetch_url = CLUBELO_FIXTURES_URL  # Proxy abgeschaltet -> Direktabruf
+
     req = urllib.request.Request(
-        CLUBELO_FIXTURES_URL, headers={"User-Agent": "value-monitor/1.0"}
+        fetch_url, headers={"User-Agent": "value-monitor/1.0"}
     )
 
     last_error = None
@@ -123,8 +154,18 @@ def fetch_clubelo_fixtures(max_retries=4, base_delay=5):
         try:
             with urllib.request.urlopen(req, timeout=45) as resp:
                 text = resp.read().decode("utf-8")
+            # Integritaets-Check: Muss die echte ClubElo-CSV sein. Ein Proxy,
+            # der HTML/Markdown/eine Fehlerseite liefert, faellt hier durch und
+            # wird wie ein Verbindungsfehler behandelt (Retry, dann RuntimeError
+            # -> Fallback behaelt den letzten guten Stand).
+            if not text.lstrip().startswith(CLUBELO_CSV_HEADER_PREFIX):
+                preview = text.lstrip()[:80].replace("\n", " ")
+                raise ValueError(
+                    f"Antwort ist keine ClubElo-CSV (Beginn: '{preview}...'). "
+                    f"Proxy liefert vermutlich umformatierten Inhalt."
+                )
             break  # Erfolg, Schleife verlassen
-        except (urllib.error.URLError, TimeoutError) as e:
+        except (urllib.error.URLError, TimeoutError, ValueError) as e:
             last_error = e
             print(f"  Versuch {attempt}/{max_retries} fehlgeschlagen ({e}), "
                   f"warte {base_delay * attempt}s ...", file=sys.stderr)
@@ -132,7 +173,8 @@ def fetch_clubelo_fixtures(max_retries=4, base_delay=5):
                 time.sleep(base_delay * attempt)
     else:
         raise RuntimeError(
-            f"clubelo.com nach {max_retries} Versuchen nicht erreichbar: {last_error}"
+            f"clubelo.com (via {fetch_url}) nach {max_retries} Versuchen nicht "
+            f"nutzbar: {last_error}"
         )
 
     reader = csv.DictReader(io.StringIO(text))
