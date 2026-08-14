@@ -1,0 +1,41 @@
+# Einmaliger Diagnose-Workflow: klärt, WARUM api.clubelo.com aus deinem
+# Actions-Runner timeouted. Als .github/workflows/clubelo_diagnose.yml ablegen,
+# committen, dann unter Actions manuell "Run workflow" druecken.
+# Nach der Diagnose kann die Datei wieder geloescht werden.
+name: ClubElo Diagnose
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Netzwerk-Diagnose gegen api.clubelo.com
+        run: |
+          echo "===== 1. DNS-Aufloesung ====="
+          getent hosts api.clubelo.com || echo "DNS fehlgeschlagen"
+          echo ""
+          echo "===== 2. TCP-Verbindung auf Port 443 (10s Timeout) ====="
+          timeout 10 bash -c "cat < /dev/null > /dev/tcp/api.clubelo.com/443" \
+            && echo "TCP 443 ERREICHBAR" \
+            || echo "TCP 443 NICHT erreichbar (Block/Route-Problem sehr wahrscheinlich)"
+          echo ""
+          echo "===== 3. curl MIT Standard-User-Agent (15s) ====="
+          curl -sS --max-time 15 -o /dev/null -w "HTTP %{http_code}, %{time_total}s\n" \
+            https://api.clubelo.com/Fixtures \
+            || echo "curl (Browser-UA) fehlgeschlagen"
+          echo ""
+          echo "===== 4. curl MIT deinem Python-User-Agent (15s) ====="
+          curl -sS --max-time 15 -A "value-monitor/1.0" -o /dev/null \
+            -w "HTTP %{http_code}, %{time_total}s\n" \
+            https://api.clubelo.com/Fixtures \
+            || echo "curl (value-monitor UA) fehlgeschlagen"
+          echo ""
+          echo "===== 5. Vergleich: erreicht der Runner das Internet ueberhaupt? ====="
+          curl -sS --max-time 15 -o /dev/null -w "example.com: HTTP %{http_code}, %{time_total}s\n" \
+            https://example.com || echo "Selbst example.com nicht erreichbar?!"
+          echo ""
+          echo "===== 6. Traceroute-Ansatz (zeigt, wo es haengt) ====="
+          curl -sS --max-time 15 -o /dev/null -w "Verbindungsphasen: DNS=%{time_namelookup}s Connect=%{time_connect}s TLS=%{time_appconnect}s\n" \
+            https://api.clubelo.com/Fixtures || echo "keine Verbindung fuer Phasen-Messung"
