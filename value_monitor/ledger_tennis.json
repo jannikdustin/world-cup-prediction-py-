@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 433.77,
+  "current_bankroll": 495.81,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -1707,6 +1707,24 @@
       "ev_pct": 11.8,
       "kelly_pct": 18.5,
       "stake": 45.05,
+      "status": "won",
+      "settled_at": "2026-08-20T12:52:59.885990+00:00",
+      "payout": 73.75,
+      "bankroll_after": 495.81
+    },
+    {
+      "id": "c920cc024cc61823",
+      "placed_at": "2026-08-20T12:52:59.775185+00:00",
+      "home": "Taylor Fritz",
+      "away": "Brandon Nakashima",
+      "league": "ATP Cincinnati Open (Hard)",
+      "sport_key": "tennis_atp_cincinnati_open",
+      "commence_time": "2026-08-21T19:00:00Z",
+      "outcome": "Sieg Brandon Nakashima",
+      "odd": 2.534,
+      "ev_pct": 4.1,
+      "kelly_pct": 2.7,
+      "stake": 11.71,
       "status": "pending",
       "settled_at": null,
       "payout": null,
