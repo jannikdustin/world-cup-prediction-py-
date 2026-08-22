@@ -1725,10 +1725,10 @@
       "ev_pct": 4.1,
       "kelly_pct": 2.7,
       "stake": 11.71,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-08-22T02:17:31.607583+00:00",
+      "payout": 0.0,
+      "bankroll_after": 633.8
     }
   ]
 }
