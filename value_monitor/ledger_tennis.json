@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 22.99,
+  "current_bankroll": 43.6,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -1923,10 +1923,10 @@
       "ev_pct": 35.1,
       "kelly_pct": 13.1,
       "stake": 8.76,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 32.32,
+      "bankroll_after": 40.14
     },
     {
       "id": "8bdd99d63b416812",
@@ -1995,10 +1995,10 @@
       "ev_pct": 26.1,
       "kelly_pct": 3.3,
       "stake": 0.8,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.0,
+      "bankroll_after": 40.14
     },
     {
       "id": "80ed322473b48d6c",
@@ -2409,10 +2409,10 @@
       "ev_pct": 112.0,
       "kelly_pct": 8.2,
       "stake": 0.37,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.0,
+      "bankroll_after": 40.14
     },
     {
       "id": "fcaf1b7b359aac9a",
@@ -2463,10 +2463,10 @@
       "ev_pct": 28.9,
       "kelly_pct": 25.9,
       "stake": 0.87,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 1.84,
+      "bankroll_after": 41.98
     },
     {
       "id": "4a41ad44a0c392b9",
@@ -2481,10 +2481,10 @@
       "ev_pct": 16.4,
       "kelly_pct": 25.5,
       "stake": 0.64,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 1.05,
+      "bankroll_after": 43.03
     },
     {
       "id": "5237d53cc82384d0",
@@ -2517,10 +2517,10 @@
       "ev_pct": 10.7,
       "kelly_pct": 7.9,
       "stake": 0.13,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.0,
+      "bankroll_after": 43.03
     },
     {
       "id": "764b70ad5afcedf0",
@@ -2553,10 +2553,10 @@
       "ev_pct": 9.4,
       "kelly_pct": 19.1,
       "stake": 0.28,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.42,
+      "bankroll_after": 43.45
     },
     {
       "id": "d4e43847a8589fb1",
@@ -2571,10 +2571,10 @@
       "ev_pct": 8.2,
       "kelly_pct": 16.3,
       "stake": 0.19,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.0,
+      "bankroll_after": 43.45
     },
     {
       "id": "8429a04519aa3871",
@@ -2589,10 +2589,10 @@
       "ev_pct": 6.1,
       "kelly_pct": 8.9,
       "stake": 0.09,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.15,
+      "bankroll_after": 43.6
     },
     {
       "id": "0029c00a286ff4b4",
@@ -2643,10 +2643,10 @@
       "ev_pct": 37.5,
       "kelly_pct": 29.0,
       "stake": 11.13,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.0,
+      "bankroll_after": 43.6
     },
     {
       "id": "1332130b795a6b6e",
@@ -2661,10 +2661,10 @@
       "ev_pct": 32.1,
       "kelly_pct": 25.0,
       "stake": 6.81,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-03T05:33:06.131316+00:00",
+      "payout": 0.0,
+      "bankroll_after": 43.6
     },
     {
       "id": "3a13d9ce552f55ea",
@@ -2697,6 +2697,150 @@
       "ev_pct": 5.9,
       "kelly_pct": 11.6,
       "stake": 2.31,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "877f0f1e7a33c8bc",
+      "placed_at": "2026-09-03T05:33:06.012499+00:00",
+      "home": "Botic van de Zandschulp",
+      "away": "Alex de Minaur",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-03T20:30:00Z",
+      "outcome": "Sieg Botic van de Zandschulp",
+      "odd": 4.162,
+      "ev_pct": 34.2,
+      "kelly_pct": 10.8,
+      "stake": 2.48,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "61423503f795f6ba",
+      "placed_at": "2026-09-03T05:33:06.012523+00:00",
+      "home": "Zachary Svajda",
+      "away": "Arthur Gea",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-03T20:00:00Z",
+      "outcome": "Sieg Arthur Gea",
+      "odd": 1.955,
+      "ev_pct": 32.5,
+      "kelly_pct": 34.0,
+      "stake": 6.97,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "a65fe747673ec50c",
+      "placed_at": "2026-09-03T05:33:06.012547+00:00",
+      "home": "Ben Shelton",
+      "away": "Denis Shapovalov",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-04T15:00:00Z",
+      "outcome": "Sieg Denis Shapovalov",
+      "odd": 4.849,
+      "ev_pct": 22.3,
+      "kelly_pct": 5.8,
+      "stake": 0.79,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "33e3fadb1aec03a9",
+      "placed_at": "2026-09-03T05:33:06.012567+00:00",
+      "home": "Benjamin Bonzi",
+      "away": "Ignacio Buse",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-03T20:00:00Z",
+      "outcome": "Sieg Benjamin Bonzi",
+      "odd": 2.199,
+      "ev_pct": 19.8,
+      "kelly_pct": 16.5,
+      "stake": 2.1,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "30620e77b43ab0ac",
+      "placed_at": "2026-09-03T05:33:06.012591+00:00",
+      "home": "Tomas Martin Etcheverry",
+      "away": "Mariano Navone",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-04T15:00:00Z",
+      "outcome": "Sieg Tomas Martin Etcheverry",
+      "odd": 1.975,
+      "ev_pct": 13.8,
+      "kelly_pct": 14.2,
+      "stake": 1.51,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "cf0cd202a70ccdf8",
+      "placed_at": "2026-09-03T05:33:06.012606+00:00",
+      "home": "Alexander Bublik",
+      "away": "Tommy Paul",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-04T15:00:00Z",
+      "outcome": "Sieg Alexander Bublik",
+      "odd": 2.693,
+      "ev_pct": 13.7,
+      "kelly_pct": 8.1,
+      "stake": 0.74,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "6351c589294b91e5",
+      "placed_at": "2026-09-03T05:33:06.012620+00:00",
+      "home": "Jiri Lehecka",
+      "away": "Stefanos Tsitsipas",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-04T15:00:00Z",
+      "outcome": "Sieg Stefanos Tsitsipas",
+      "odd": 2.83,
+      "ev_pct": 10.6,
+      "kelly_pct": 5.8,
+      "stake": 0.49,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "55dcdedc46f5336a",
+      "placed_at": "2026-09-03T05:33:06.012650+00:00",
+      "home": "Taylor Fritz",
+      "away": "Mattia Bellucci",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-03T17:00:00Z",
+      "outcome": "Sieg Mattia Bellucci",
+      "odd": 7.344,
+      "ev_pct": 7.8,
+      "kelly_pct": 1.2,
+      "stake": 0.09,
       "status": "pending",
       "settled_at": null,
       "payout": null,
