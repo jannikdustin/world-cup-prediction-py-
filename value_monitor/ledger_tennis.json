@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 79.09,
+  "current_bankroll": 64.91,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -2787,10 +2787,10 @@
       "ev_pct": 13.8,
       "kelly_pct": 14.2,
       "stake": 1.51,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-05T05:20:58.961449+00:00",
+      "payout": 2.98,
+      "bankroll_after": 63.52
     },
     {
       "id": "cf0cd202a70ccdf8",
@@ -2805,10 +2805,10 @@
       "ev_pct": 13.7,
       "kelly_pct": 8.1,
       "stake": 0.74,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-05T05:20:58.961449+00:00",
+      "payout": 0.0,
+      "bankroll_after": 63.52
     },
     {
       "id": "6351c589294b91e5",
@@ -2823,10 +2823,10 @@
       "ev_pct": 10.6,
       "kelly_pct": 5.8,
       "stake": 0.49,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-05T05:20:58.961449+00:00",
+      "payout": 1.39,
+      "bankroll_after": 64.91
     },
     {
       "id": "55dcdedc46f5336a",
@@ -2949,6 +2949,60 @@
       "ev_pct": 8.1,
       "kelly_pct": 6.4,
       "stake": 0.52,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "31f14c9da2b4e792",
+      "placed_at": "2026-09-05T05:20:58.861672+00:00",
+      "home": "Zizou Bergs",
+      "away": "Botic van de Zandschulp",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-05T20:30:00Z",
+      "outcome": "Sieg Zizou Bergs",
+      "odd": 2.741,
+      "ev_pct": 21.8,
+      "kelly_pct": 12.5,
+      "stake": 9.89,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "06c5abc90fed603a",
+      "placed_at": "2026-09-05T05:20:58.861696+00:00",
+      "home": "Alex Michelsen",
+      "away": "Tomas Martin Etcheverry",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-06T15:00:00Z",
+      "outcome": "Sieg Tomas Martin Etcheverry",
+      "odd": 3.584,
+      "ev_pct": 20.7,
+      "kelly_pct": 8.0,
+      "stake": 5.54,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "f582c30e547fb7e7",
+      "placed_at": "2026-09-05T05:20:58.861710+00:00",
+      "home": "Daniil Medvedev",
+      "away": "Frances Tiafoe",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-06T15:00:00Z",
+      "outcome": "Sieg Frances Tiafoe",
+      "odd": 2.137,
+      "ev_pct": 5.5,
+      "kelly_pct": 4.9,
+      "stake": 3.12,
       "status": "pending",
       "settled_at": null,
       "payout": null,
