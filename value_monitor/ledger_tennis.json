@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 64.91,
+  "current_bankroll": 80.39,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -2751,10 +2751,10 @@
       "ev_pct": 22.3,
       "kelly_pct": 5.8,
       "stake": 0.79,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 0.0,
+      "bankroll_after": 37.06
     },
     {
       "id": "33e3fadb1aec03a9",
@@ -2859,10 +2859,10 @@
       "ev_pct": 102.4,
       "kelly_pct": 26.2,
       "stake": 11.42,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 0.0,
+      "bankroll_after": 37.06
     },
     {
       "id": "5ee2384200f24744",
@@ -2877,10 +2877,10 @@
       "ev_pct": 66.4,
       "kelly_pct": 16.8,
       "stake": 5.41,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 26.76,
+      "bankroll_after": 63.82
     },
     {
       "id": "c200d0386253935e",
@@ -2895,10 +2895,10 @@
       "ev_pct": 52.5,
       "kelly_pct": 30.0,
       "stake": 8.03,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 0.0,
+      "bankroll_after": 63.82
     },
     {
       "id": "0d5bbe4768065139",
@@ -2913,10 +2913,10 @@
       "ev_pct": 52.0,
       "kelly_pct": 36.4,
       "stake": 6.82,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 16.57,
+      "bankroll_after": 80.39
     },
     {
       "id": "57b17411881a304b",
@@ -2931,10 +2931,10 @@
       "ev_pct": 24.3,
       "kelly_pct": 31.3,
       "stake": 3.73,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 0.0,
+      "bankroll_after": 80.39
     },
     {
       "id": "87006b1de7c0d06b",
@@ -2967,10 +2967,10 @@
       "ev_pct": 21.8,
       "kelly_pct": 12.5,
       "stake": 9.89,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-06T05:37:14.351340+00:00",
+      "payout": 0.0,
+      "bankroll_after": 80.39
     },
     {
       "id": "06c5abc90fed603a",
@@ -3003,6 +3003,24 @@
       "ev_pct": 5.5,
       "kelly_pct": 4.9,
       "stake": 3.12,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "9c890437ef6e3b1a",
+      "placed_at": "2026-09-06T05:37:14.243975+00:00",
+      "home": "Francisco Cerundolo",
+      "away": "Alexander Blockx",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-07T15:00:00Z",
+      "outcome": "Sieg Francisco Cerundolo",
+      "odd": 2.323,
+      "ev_pct": 56.7,
+      "kelly_pct": 42.9,
+      "stake": 27.85,
       "status": "pending",
       "settled_at": null,
       "payout": null,
