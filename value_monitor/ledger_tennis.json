@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 80.39,
+  "current_bankroll": 62.94,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -2949,10 +2949,10 @@
       "ev_pct": 8.1,
       "kelly_pct": 6.4,
       "stake": 0.52,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-07T05:47:28.099139+00:00",
+      "payout": 0.0,
+      "bankroll_after": 56.27
     },
     {
       "id": "31f14c9da2b4e792",
@@ -2985,10 +2985,10 @@
       "ev_pct": 20.7,
       "kelly_pct": 8.0,
       "stake": 5.54,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-07T05:47:28.099139+00:00",
+      "payout": 0.0,
+      "bankroll_after": 56.27
     },
     {
       "id": "f582c30e547fb7e7",
@@ -3003,10 +3003,10 @@
       "ev_pct": 5.5,
       "kelly_pct": 4.9,
       "stake": 3.12,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-09-07T05:47:28.099139+00:00",
+      "payout": 6.67,
+      "bankroll_after": 62.94
     },
     {
       "id": "9c890437ef6e3b1a",
@@ -3021,6 +3021,24 @@
       "ev_pct": 56.7,
       "kelly_pct": 42.9,
       "stake": 27.85,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "6b2bc3f904ac2518",
+      "placed_at": "2026-09-07T05:47:27.991121+00:00",
+      "home": "Karen Khachanov",
+      "away": "Learner Tien",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-07T20:00:00Z",
+      "outcome": "Sieg Learner Tien",
+      "odd": 1.573,
+      "ev_pct": 17.2,
+      "kelly_pct": 30.0,
+      "stake": 24.12,
       "status": "pending",
       "settled_at": null,
       "payout": null,
