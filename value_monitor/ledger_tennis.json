@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 62.94,
+  "current_bankroll": 360.54,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -1743,10 +1743,10 @@
       "ev_pct": 256.0,
       "kelly_pct": 24.5,
       "stake": 155.28,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 155.28,
+      "bankroll_after": 208.55
     },
     {
       "id": "ec9fca6bdd1ce599",
@@ -1761,10 +1761,10 @@
       "ev_pct": 115.7,
       "kelly_pct": 22.8,
       "stake": 109.1,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 109.1,
+      "bankroll_after": 317.65
     },
     {
       "id": "52dd69b115baa01c",
@@ -1869,10 +1869,10 @@
       "ev_pct": 47.9,
       "kelly_pct": 27.3,
       "stake": 30.41,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 30.41,
+      "bankroll_after": 348.06
     },
     {
       "id": "dabe0b2ef2d8b8a7",
@@ -1959,10 +1959,10 @@
       "ev_pct": 27.3,
       "kelly_pct": 23.0,
       "stake": 8.22,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 8.22,
+      "bankroll_after": 356.28
     },
     {
       "id": "1dd0168c1ee37911",
@@ -1977,10 +1977,10 @@
       "ev_pct": 26.4,
       "kelly_pct": 12.1,
       "stake": 3.33,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 3.33,
+      "bankroll_after": 359.61
     },
     {
       "id": "c91dee8b6567054d",
@@ -2157,10 +2157,10 @@
       "ev_pct": 10.7,
       "kelly_pct": 11.3,
       "stake": 0.93,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 0.93,
+      "bankroll_after": 360.54
     },
     {
       "id": "edd7e128af18c272",
@@ -3021,10 +3021,10 @@
       "ev_pct": 56.7,
       "kelly_pct": 42.9,
       "stake": 27.85,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 0.0,
+      "bankroll_after": 360.54
     },
     {
       "id": "6b2bc3f904ac2518",
@@ -3039,6 +3039,60 @@
       "ev_pct": 17.2,
       "kelly_pct": 30.0,
       "stake": 24.12,
+      "status": "lost",
+      "settled_at": "2026-09-08T05:41:52.641821+00:00",
+      "payout": 0.0,
+      "bankroll_after": 360.54
+    },
+    {
+      "id": "97a15decc084a22f",
+      "placed_at": "2026-09-08T05:41:52.518539+00:00",
+      "home": "Alexander Zverev",
+      "away": "Botic van de Zandschulp",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-09T15:30:00Z",
+      "outcome": "Sieg Botic van de Zandschulp",
+      "odd": 6.101,
+      "ev_pct": 19.2,
+      "kelly_pct": 3.8,
+      "stake": 2.39,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "086816759984fae3",
+      "placed_at": "2026-09-08T05:41:52.518563+00:00",
+      "home": "Karen Khachanov",
+      "away": "Alexander Blockx",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-09T15:30:00Z",
+      "outcome": "Sieg Alexander Blockx",
+      "odd": 2.181,
+      "ev_pct": 6.5,
+      "kelly_pct": 5.5,
+      "stake": 3.33,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "7410b52bb99dafaa",
+      "placed_at": "2026-09-08T05:41:52.518580+00:00",
+      "home": "Frances Tiafoe",
+      "away": "Alex Michelsen",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-08T17:00:00Z",
+      "outcome": "Sieg Frances Tiafoe",
+      "odd": 1.654,
+      "ev_pct": 4.5,
+      "kelly_pct": 6.9,
+      "stake": 3.95,
       "status": "pending",
       "settled_at": null,
       "payout": null,
