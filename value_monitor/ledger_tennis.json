@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 367.07,
+  "current_bankroll": 288.15,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3057,10 +3057,10 @@
       "ev_pct": 19.2,
       "kelly_pct": 3.8,
       "stake": 2.39,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-10T05:42:19.753452+00:00",
+      "payout": 0.0,
+      "bankroll_after": 288.15
     },
     {
       "id": "086816759984fae3",
@@ -3075,10 +3075,10 @@
       "ev_pct": 6.5,
       "kelly_pct": 5.5,
       "stake": 3.33,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-09-10T05:42:19.753452+00:00",
+      "payout": 0.0,
+      "bankroll_after": 288.15
     },
     {
       "id": "7410b52bb99dafaa",
@@ -3097,6 +3097,24 @@
       "settled_at": "2026-09-09T05:47:44.028384+00:00",
       "payout": 6.53,
       "bankroll_after": 367.07
+    },
+    {
+      "id": "8c71e842f36d8b7b",
+      "placed_at": "2026-09-10T05:42:19.637578+00:00",
+      "home": "Frances Tiafoe",
+      "away": "Ben Shelton",
+      "league": "ATP US Open (Hard)",
+      "sport_key": "tennis_atp_us_open",
+      "commence_time": "2026-09-11T19:00:00Z",
+      "outcome": "Sieg Frances Tiafoe",
+      "odd": 3.502,
+      "ev_pct": 53.7,
+      "kelly_pct": 21.5,
+      "stake": 78.92,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
     }
   ]
 }
