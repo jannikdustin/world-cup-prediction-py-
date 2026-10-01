@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 288.15,
+  "current_bankroll": 201.41,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3115,6 +3115,78 @@
       "settled_at": "2026-09-12T05:29:08.645625+00:00",
       "payout": 0.0,
       "bankroll_after": 288.15
+    },
+    {
+      "id": "4e6e2c0f3102ed01",
+      "placed_at": "2026-10-01T06:58:00.856020+00:00",
+      "home": "Juncheng Shang",
+      "away": "Sebastian Baez",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-01T07:10:00Z",
+      "outcome": "Sieg Sebastian Baez",
+      "odd": 2.283,
+      "ev_pct": 29.8,
+      "kelly_pct": 23.2,
+      "stake": 66.85,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "c001d5da7cc288a6",
+      "placed_at": "2026-10-01T06:58:00.856036+00:00",
+      "home": "Alexander Zverev",
+      "away": "Cameron Norrie",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-01T07:20:00Z",
+      "outcome": "Sieg Cameron Norrie",
+      "odd": 6.997,
+      "ev_pct": 9.4,
+      "kelly_pct": 1.6,
+      "stake": 3.54,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "b111135a585b13b6",
+      "placed_at": "2026-10-01T06:58:00.856046+00:00",
+      "home": "Alexander Bublik",
+      "away": "Jakub Mensik",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-01T12:30:00Z",
+      "outcome": "Sieg Alexander Bublik",
+      "odd": 2.448,
+      "ev_pct": 8.8,
+      "kelly_pct": 6.1,
+      "stake": 13.28,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "f766e0f21ccf0039",
+      "placed_at": "2026-10-01T06:58:00.856055+00:00",
+      "home": "Adolfo Daniel Vallejo",
+      "away": "Rafael Jodar",
+      "league": "ATP Japan Open (Hard)",
+      "sport_key": "tennis_atp_japan_open",
+      "commence_time": "2026-10-01T08:10:00Z",
+      "outcome": "Sieg Adolfo Daniel Vallejo",
+      "odd": 4.454,
+      "ev_pct": 5.2,
+      "kelly_pct": 1.5,
+      "stake": 3.07,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
     }
   ]
 }
