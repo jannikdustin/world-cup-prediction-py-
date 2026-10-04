@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 88.62,
+  "current_bankroll": 141.6,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3219,10 +3219,10 @@
       "ev_pct": 18.5,
       "kelly_pct": 11.7,
       "stake": 18.78,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-04T06:41:07.028525+00:00",
+      "payout": 48.43,
+      "bankroll_after": 109.69
     },
     {
       "id": "e21e857ec8c6bd19",
@@ -3237,10 +3237,10 @@
       "ev_pct": 11.2,
       "kelly_pct": 19.1,
       "stake": 27.07,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-04T06:41:07.028525+00:00",
+      "payout": 0.0,
+      "bankroll_after": 109.69
     },
     {
       "id": "869fb11adfaa4a16",
@@ -3255,10 +3255,10 @@
       "ev_pct": 6.7,
       "kelly_pct": 9.8,
       "stake": 11.24,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-04T06:41:07.028525+00:00",
+      "payout": 18.87,
+      "bankroll_after": 128.56
     },
     {
       "id": "14eef7bae824f4c1",
@@ -3309,6 +3309,60 @@
       "ev_pct": 5.0,
       "kelly_pct": 8.5,
       "stake": 8.23,
+      "status": "won",
+      "settled_at": "2026-10-04T06:41:07.028525+00:00",
+      "payout": 13.04,
+      "bankroll_after": 141.6
+    },
+    {
+      "id": "62ae9034da6fcd66",
+      "placed_at": "2026-10-04T06:41:06.903653+00:00",
+      "home": "Alexander Zverev",
+      "away": "Novak Djokovic",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-04T11:00:00Z",
+      "outcome": "Sieg Novak Djokovic",
+      "odd": 3.138,
+      "ev_pct": 42.1,
+      "kelly_pct": 19.7,
+      "stake": 17.46,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "48a927e91b2f0273",
+      "placed_at": "2026-10-04T06:41:06.903691+00:00",
+      "home": "Alex de Minaur",
+      "away": "Andrey Rublev",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-04T06:50:00Z",
+      "outcome": "Sieg Alex de Minaur",
+      "odd": 1.766,
+      "ev_pct": 9.7,
+      "kelly_pct": 12.6,
+      "stake": 8.97,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "c6e9c04a6c51a166",
+      "placed_at": "2026-10-04T06:41:06.903715+00:00",
+      "home": "Daniil Medvedev",
+      "away": "Francisco Cerundolo",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-04T08:30:00Z",
+      "outcome": "Sieg Francisco Cerundolo",
+      "odd": 3.06,
+      "ev_pct": 3.2,
+      "kelly_pct": 1.5,
+      "stake": 0.93,
       "status": "pending",
       "settled_at": null,
       "payout": null,
