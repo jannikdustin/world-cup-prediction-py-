@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 141.6,
+  "current_bankroll": 195.84,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3273,10 +3273,10 @@
       "ev_pct": 17.8,
       "kelly_pct": 15.0,
       "stake": 17.56,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-05T06:38:00.479423+00:00",
+      "payout": 38.33,
+      "bankroll_after": 130.23
     },
     {
       "id": "d4a6fec208647f57",
@@ -3291,10 +3291,10 @@
       "ev_pct": 8.2,
       "kelly_pct": 2.7,
       "stake": 2.69,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-05T06:38:00.479423+00:00",
+      "payout": 10.82,
+      "bankroll_after": 141.05
     },
     {
       "id": "d00cd2119600817f",
@@ -3327,10 +3327,10 @@
       "ev_pct": 42.1,
       "kelly_pct": 19.7,
       "stake": 17.46,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-05T06:38:00.479423+00:00",
+      "payout": 54.79,
+      "bankroll_after": 195.84
     },
     {
       "id": "48a927e91b2f0273",
@@ -3363,6 +3363,24 @@
       "ev_pct": 3.2,
       "kelly_pct": 1.5,
       "stake": 0.93,
+      "status": "lost",
+      "settled_at": "2026-10-05T06:38:00.479423+00:00",
+      "payout": 0.0,
+      "bankroll_after": 195.84
+    },
+    {
+      "id": "a3f2ed564c7545c3",
+      "placed_at": "2026-10-05T06:38:00.378894+00:00",
+      "home": "Novak Djokovic",
+      "away": "Daniil Medvedev",
+      "league": "ATP China Open (Hard)",
+      "sport_key": "tennis_atp_china_open",
+      "commence_time": "2026-10-05T11:00:00Z",
+      "outcome": "Sieg Novak Djokovic",
+      "odd": 2.181,
+      "ev_pct": 41.5,
+      "kelly_pct": 35.1,
+      "stake": 49.7,
       "status": "pending",
       "settled_at": null,
       "payout": null,
