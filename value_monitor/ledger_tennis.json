@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 25.0,
+  "current_bankroll": 315.52,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3399,10 +3399,10 @@
       "ev_pct": 29.3,
       "kelly_pct": 23.0,
       "stake": 45.04,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 102.33,
+      "bankroll_after": 115.31
     },
     {
       "id": "25efc105be1c26f2",
@@ -3453,10 +3453,10 @@
       "ev_pct": 11.4,
       "kelly_pct": 10.3,
       "stake": 10.53,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 0.0,
+      "bankroll_after": 115.31
     },
     {
       "id": "225d81f92fb4e7ed",
@@ -3507,10 +3507,10 @@
       "ev_pct": 6.3,
       "kelly_pct": 4.8,
       "stake": 3.56,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 8.19,
+      "bankroll_after": 123.5
     },
     {
       "id": "873915bdf47bbdc1",
@@ -3543,10 +3543,10 @@
       "ev_pct": 80.7,
       "kelly_pct": 28.2,
       "stake": 49.67,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 192.02,
+      "bankroll_after": 315.52
     },
     {
       "id": "a2ca1c3619b20c05",
@@ -3561,10 +3561,10 @@
       "ev_pct": 58.6,
       "kelly_pct": 24.9,
       "stake": 31.49,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 0.0,
+      "bankroll_after": 315.52
     },
     {
       "id": "245a4e68e1347c3f",
@@ -3615,10 +3615,10 @@
       "ev_pct": 28.4,
       "kelly_pct": 16.5,
       "stake": 12.06,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 0.0,
+      "bankroll_after": 315.52
     },
     {
       "id": "f6705b24c5dc93d5",
@@ -3633,10 +3633,10 @@
       "ev_pct": 19.4,
       "kelly_pct": 42.4,
       "stake": 25.87,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-08T07:04:26.565679+00:00",
+      "payout": 0.0,
+      "bankroll_after": 315.52
     },
     {
       "id": "99e8b2296ba83fa6",
@@ -3687,6 +3687,78 @@
       "ev_pct": 3.9,
       "kelly_pct": 7.9,
       "stake": 2.14,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "cb54fdcbb1c7a9f0",
+      "placed_at": "2026-10-08T07:04:26.449325+00:00",
+      "home": "Francisco Cerundolo",
+      "away": "Roman Safiullin",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-09T04:00:00Z",
+      "outcome": "Sieg Francisco Cerundolo",
+      "odd": 1.936,
+      "ev_pct": 28.7,
+      "kelly_pct": 30.7,
+      "stake": 7.67,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "a355b137b36a9a14",
+      "placed_at": "2026-10-08T07:04:26.449351+00:00",
+      "home": "Karen Khachanov",
+      "away": "Arthur Fery",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-09T04:00:00Z",
+      "outcome": "Sieg Arthur Fery",
+      "odd": 2.927,
+      "ev_pct": 13.7,
+      "kelly_pct": 7.1,
+      "stake": 1.23,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "d470edca4d45b77a",
+      "placed_at": "2026-10-08T07:04:26.449369+00:00",
+      "home": "Arthur Gea",
+      "away": "Ugo Humbert",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-09T04:00:00Z",
+      "outcome": "Sieg Ugo Humbert",
+      "odd": 2.059,
+      "ev_pct": 11.1,
+      "kelly_pct": 10.5,
+      "stake": 1.69,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "8c0c4bb3f64abb43",
+      "placed_at": "2026-10-08T07:04:26.449422+00:00",
+      "home": "Matteo Berrettini",
+      "away": "Brandon Nakashima",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-09T04:00:00Z",
+      "outcome": "Sieg Brandon Nakashima",
+      "odd": 1.627,
+      "ev_pct": 6.2,
+      "kelly_pct": 9.9,
+      "stake": 1.43,
       "status": "pending",
       "settled_at": null,
       "payout": null,
