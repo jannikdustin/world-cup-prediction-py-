@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 145.69,
+  "current_bankroll": 111.49,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3705,10 +3705,10 @@
       "ev_pct": 28.7,
       "kelly_pct": 30.7,
       "stake": 7.67,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-10T06:45:48.988424+00:00",
+      "payout": 14.85,
+      "bankroll_after": 109.16
     },
     {
       "id": "a355b137b36a9a14",
@@ -3723,10 +3723,10 @@
       "ev_pct": 13.7,
       "kelly_pct": 7.1,
       "stake": 1.23,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-10T06:45:48.988424+00:00",
+      "payout": 0.0,
+      "bankroll_after": 109.16
     },
     {
       "id": "d470edca4d45b77a",
@@ -3741,10 +3741,10 @@
       "ev_pct": 11.1,
       "kelly_pct": 10.5,
       "stake": 1.69,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-10T06:45:48.988424+00:00",
+      "payout": 0.0,
+      "bankroll_after": 109.16
     },
     {
       "id": "8c0c4bb3f64abb43",
@@ -3759,10 +3759,10 @@
       "ev_pct": 6.2,
       "kelly_pct": 9.9,
       "stake": 1.43,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-10T06:45:48.988424+00:00",
+      "payout": 2.33,
+      "bankroll_after": 111.49
     },
     {
       "id": "609f59094e1d2741",
@@ -3795,10 +3795,10 @@
       "ev_pct": 19.6,
       "kelly_pct": 39.7,
       "stake": 121.0,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-10T06:45:48.988424+00:00",
+      "payout": 0.0,
+      "bankroll_after": 111.49
     },
     {
       "id": "1e536cc084c72fe1",
@@ -3903,6 +3903,78 @@
       "ev_pct": 4.8,
       "kelly_pct": 3.4,
       "stake": 2.84,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "64a5931254828adc",
+      "placed_at": "2026-10-10T06:45:48.899662+00:00",
+      "home": "Hubert Hurkacz",
+      "away": "Yi Zhou",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-11T04:00:00Z",
+      "outcome": "Sieg Yi Zhou",
+      "odd": 5.85,
+      "ev_pct": 36.0,
+      "kelly_pct": 7.4,
+      "stake": 10.78,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "a41fbc58caa3a801",
+      "placed_at": "2026-10-10T06:45:48.899677+00:00",
+      "home": "Karen Khachanov",
+      "away": "Adrian Mannarino",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-11T04:00:00Z",
+      "outcome": "Sieg Adrian Mannarino",
+      "odd": 3.524,
+      "ev_pct": 29.6,
+      "kelly_pct": 11.7,
+      "stake": 15.78,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "4c0a10eb38c962a7",
+      "placed_at": "2026-10-10T06:45:48.899709+00:00",
+      "home": "Alejandro Davidovich Fokina",
+      "away": "Frances Tiafoe",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-11T04:00:00Z",
+      "outcome": "Sieg Frances Tiafoe",
+      "odd": 1.889,
+      "ev_pct": 16.3,
+      "kelly_pct": 18.3,
+      "stake": 21.8,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "6cc7a187d9415e33",
+      "placed_at": "2026-10-10T06:45:48.899742+00:00",
+      "home": "Francisco Cerundolo",
+      "away": "Jakub Mensik",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-11T04:00:00Z",
+      "outcome": "Sieg Francisco Cerundolo",
+      "odd": 2.26,
+      "ev_pct": 3.9,
+      "kelly_pct": 3.1,
+      "stake": 3.02,
       "status": "pending",
       "settled_at": null,
       "payout": null,
