@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 111.49,
+  "current_bankroll": 206.43,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3777,10 +3777,10 @@
       "ev_pct": 38.5,
       "kelly_pct": 3.4,
       "stake": 10.73,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 0.0,
+      "bankroll_after": 76.24
     },
     {
       "id": "2beeb9b3e96e6a2f",
@@ -3813,10 +3813,10 @@
       "ev_pct": 19.3,
       "kelly_pct": 42.3,
       "stake": 77.74,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 113.27,
+      "bankroll_after": 189.51
     },
     {
       "id": "82822e3d15dd2d03",
@@ -3831,10 +3831,10 @@
       "ev_pct": 15.7,
       "kelly_pct": 7.9,
       "stake": 8.38,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 0.0,
+      "bankroll_after": 189.51
     },
     {
       "id": "5a1c54593e9fe12a",
@@ -3849,10 +3849,10 @@
       "ev_pct": 11.7,
       "kelly_pct": 5.1,
       "stake": 4.98,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 0.0,
+      "bankroll_after": 189.51
     },
     {
       "id": "108ee4833114a935",
@@ -3867,10 +3867,10 @@
       "ev_pct": 11.1,
       "kelly_pct": 7.2,
       "stake": 6.67,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 16.92,
+      "bankroll_after": 206.43
     },
     {
       "id": "e85a440bcc2fda36",
@@ -3885,10 +3885,10 @@
       "ev_pct": 6.3,
       "kelly_pct": 2.8,
       "stake": 2.41,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 0.0,
+      "bankroll_after": 206.43
     },
     {
       "id": "2e02631ee2009467",
@@ -3903,10 +3903,10 @@
       "ev_pct": 4.8,
       "kelly_pct": 3.4,
       "stake": 2.84,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-11T06:54:19.669791+00:00",
+      "payout": 0.0,
+      "bankroll_after": 206.43
     },
     {
       "id": "64a5931254828adc",
@@ -3975,6 +3975,60 @@
       "ev_pct": 3.9,
       "kelly_pct": 3.1,
       "stake": 3.02,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "907d7d97a8bcd368",
+      "placed_at": "2026-10-11T06:54:19.546539+00:00",
+      "home": "Arthur Fils",
+      "away": "Botic van de Zandschulp",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-12T07:30:00Z",
+      "outcome": "Sieg Botic van de Zandschulp",
+      "odd": 4.315,
+      "ev_pct": 23.0,
+      "kelly_pct": 6.9,
+      "stake": 7.69,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "eed7e7c5d32f9309",
+      "placed_at": "2026-10-11T06:54:19.546579+00:00",
+      "home": "Alexander Bublik",
+      "away": "Brandon Nakashima",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-11T08:10:00Z",
+      "outcome": "Sieg Brandon Nakashima",
+      "odd": 1.781,
+      "ev_pct": 10.8,
+      "kelly_pct": 13.8,
+      "stake": 14.32,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "88ed79d263f17f75",
+      "placed_at": "2026-10-11T06:54:19.546598+00:00",
+      "home": "Tommy Paul",
+      "away": "Valentin Vacherot",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-12T11:10:00Z",
+      "outcome": "Sieg Tommy Paul",
+      "odd": 1.665,
+      "ev_pct": 9.8,
+      "kelly_pct": 14.8,
+      "stake": 13.24,
       "status": "pending",
       "settled_at": null,
       "payout": null,
