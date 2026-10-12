@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 206.43,
+  "current_bankroll": 203.63,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3345,10 +3345,10 @@
       "ev_pct": 9.7,
       "kelly_pct": 12.6,
       "stake": 8.97,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-10-12T07:02:59.526688+00:00",
+      "payout": 8.97,
+      "bankroll_after": 203.63
     },
     {
       "id": "c6e9c04a6c51a166",
@@ -3921,10 +3921,10 @@
       "ev_pct": 36.0,
       "kelly_pct": 7.4,
       "stake": 10.78,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-12T07:02:59.526688+00:00",
+      "payout": 0.0,
+      "bankroll_after": 203.63
     },
     {
       "id": "a41fbc58caa3a801",
@@ -3939,10 +3939,10 @@
       "ev_pct": 29.6,
       "kelly_pct": 11.7,
       "stake": 15.78,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-12T07:02:59.526688+00:00",
+      "payout": 0.0,
+      "bankroll_after": 203.63
     },
     {
       "id": "4c0a10eb38c962a7",
@@ -3957,10 +3957,10 @@
       "ev_pct": 16.3,
       "kelly_pct": 18.3,
       "stake": 21.8,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-12T07:02:59.526688+00:00",
+      "payout": 0.0,
+      "bankroll_after": 203.63
     },
     {
       "id": "6cc7a187d9415e33",
@@ -3975,10 +3975,10 @@
       "ev_pct": 3.9,
       "kelly_pct": 3.1,
       "stake": 3.02,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-12T07:02:59.526688+00:00",
+      "payout": 0.0,
+      "bankroll_after": 203.63
     },
     {
       "id": "907d7d97a8bcd368",
@@ -4011,10 +4011,10 @@
       "ev_pct": 10.8,
       "kelly_pct": 13.8,
       "stake": 14.32,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-12T07:02:59.526688+00:00",
+      "payout": 0.0,
+      "bankroll_after": 203.63
     },
     {
       "id": "88ed79d263f17f75",
@@ -4029,6 +4029,24 @@
       "ev_pct": 9.8,
       "kelly_pct": 14.8,
       "stake": 13.24,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "1b38bf9a21052cdc",
+      "placed_at": "2026-10-12T07:02:59.410330+00:00",
+      "home": "Alex de Minaur",
+      "away": "Karen Khachanov",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-13T04:00:00Z",
+      "outcome": "Sieg Alex de Minaur",
+      "odd": 1.662,
+      "ev_pct": 3.8,
+      "kelly_pct": 5.7,
+      "stake": 11.77,
       "status": "pending",
       "settled_at": null,
       "payout": null,
