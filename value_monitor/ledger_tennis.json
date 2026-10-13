@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 203.63,
+  "current_bankroll": 221.08,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3993,10 +3993,10 @@
       "ev_pct": 23.0,
       "kelly_pct": 6.9,
       "stake": 7.69,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-13T07:27:34.629819+00:00",
+      "payout": 33.18,
+      "bankroll_after": 199.04
     },
     {
       "id": "eed7e7c5d32f9309",
@@ -4029,10 +4029,10 @@
       "ev_pct": 9.8,
       "kelly_pct": 14.8,
       "stake": 13.24,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-13T07:27:34.629819+00:00",
+      "payout": 22.04,
+      "bankroll_after": 221.08
     },
     {
       "id": "1b38bf9a21052cdc",
@@ -4047,6 +4047,42 @@
       "ev_pct": 3.8,
       "kelly_pct": 5.7,
       "stake": 11.77,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "c297e05f4d22ba77",
+      "placed_at": "2026-10-13T07:27:34.514480+00:00",
+      "home": "Botic van de Zandschulp",
+      "away": "Rafael Jodar",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-14T04:00:00Z",
+      "outcome": "Sieg Botic van de Zandschulp",
+      "odd": 2.53,
+      "ev_pct": 14.3,
+      "kelly_pct": 9.4,
+      "stake": 19.14,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "f3627aa454ca5113",
+      "placed_at": "2026-10-13T07:27:34.514522+00:00",
+      "home": "Casper Ruud",
+      "away": "Felix Auger-Aliassime",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-14T05:10:00Z",
+      "outcome": "Sieg Felix Auger-Aliassime",
+      "odd": 1.657,
+      "ev_pct": 6.7,
+      "kelly_pct": 10.1,
+      "stake": 18.63,
       "status": "pending",
       "settled_at": null,
       "payout": null,
