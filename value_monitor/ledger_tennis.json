@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 221.08,
+  "current_bankroll": 173.88,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4047,10 +4047,10 @@
       "ev_pct": 3.8,
       "kelly_pct": 5.7,
       "stake": 11.77,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-14T05:55:14.663349+00:00",
+      "payout": 19.56,
+      "bankroll_after": 173.88
     },
     {
       "id": "c297e05f4d22ba77",
@@ -4083,6 +4083,42 @@
       "ev_pct": 6.7,
       "kelly_pct": 10.1,
       "stake": 18.63,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "4f70e9c95da724b5",
+      "placed_at": "2026-10-14T05:55:14.536459+00:00",
+      "home": "Arthur Gea",
+      "away": "Alejandro Davidovich Fokina",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-15T04:00:00Z",
+      "outcome": "Sieg Alejandro Davidovich Fokina",
+      "odd": 1.781,
+      "ev_pct": 12.4,
+      "kelly_pct": 15.9,
+      "stake": 35.15,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "a35ca9bd3978ea39",
+      "placed_at": "2026-10-14T05:55:14.536475+00:00",
+      "home": "Alexander Zverev",
+      "away": "Alex de Minaur",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-15T04:00:00Z",
+      "outcome": "Sieg Alexander Zverev",
+      "odd": 1.451,
+      "ev_pct": 7.7,
+      "kelly_pct": 17.0,
+      "stake": 31.61,
       "status": "pending",
       "settled_at": null,
       "payout": null,
