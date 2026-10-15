@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 173.88,
+  "current_bankroll": 178.88,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -3489,10 +3489,10 @@
       "ev_pct": 7.8,
       "kelly_pct": 15.4,
       "stake": 13.52,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "void",
+      "settled_at": "2026-10-15T05:39:19.221248+00:00",
+      "payout": 13.52,
+      "bankroll_after": 178.88
     },
     {
       "id": "e56fd1c83213f6df",
@@ -4065,10 +4065,10 @@
       "ev_pct": 14.3,
       "kelly_pct": 9.4,
       "stake": 19.14,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-15T05:39:19.221248+00:00",
+      "payout": 0.0,
+      "bankroll_after": 178.88
     },
     {
       "id": "f3627aa454ca5113",
@@ -4083,10 +4083,10 @@
       "ev_pct": 6.7,
       "kelly_pct": 10.1,
       "stake": 18.63,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-10-15T05:39:19.221248+00:00",
+      "payout": 0.0,
+      "bankroll_after": 178.88
     },
     {
       "id": "4f70e9c95da724b5",
@@ -4119,6 +4119,24 @@
       "ev_pct": 7.7,
       "kelly_pct": 17.0,
       "stake": 31.61,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "70afb06efcb00014",
+      "placed_at": "2026-10-15T05:39:19.102546+00:00",
+      "home": "Daniil Medvedev",
+      "away": "Tommy Paul",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-16T04:00:00Z",
+      "outcome": "Sieg Tommy Paul",
+      "odd": 2.713,
+      "ev_pct": 8.3,
+      "kelly_pct": 4.9,
+      "stake": 8.52,
       "status": "pending",
       "settled_at": null,
       "payout": null,
