@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 178.88,
+  "current_bankroll": 287.35,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4101,10 +4101,10 @@
       "ev_pct": 12.4,
       "kelly_pct": 15.9,
       "stake": 35.15,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-16T05:34:25.785120+00:00",
+      "payout": 62.6,
+      "bankroll_after": 241.48
     },
     {
       "id": "a35ca9bd3978ea39",
@@ -4119,10 +4119,10 @@
       "ev_pct": 7.7,
       "kelly_pct": 17.0,
       "stake": 31.61,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-10-16T05:34:25.785120+00:00",
+      "payout": 45.87,
+      "bankroll_after": 287.35
     },
     {
       "id": "70afb06efcb00014",
