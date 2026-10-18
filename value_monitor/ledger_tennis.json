@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 287.35,
+  "current_bankroll": 256.6,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4141,6 +4141,24 @@
       "settled_at": "2026-10-17T05:23:57.473443+00:00",
       "payout": 0.0,
       "bankroll_after": 287.35
+    },
+    {
+      "id": "d10eae8997290ad2",
+      "placed_at": "2026-10-18T05:31:34.121929+00:00",
+      "home": "Alejandro Davidovich Fokina",
+      "away": "Rafael Jodar",
+      "league": "ATP Shanghai Masters (Hard)",
+      "sport_key": "tennis_atp_shanghai_masters",
+      "commence_time": "2026-10-18T08:30:00Z",
+      "outcome": "Sieg Alejandro Davidovich Fokina",
+      "odd": 2.141,
+      "ev_pct": 12.2,
+      "kelly_pct": 10.7,
+      "stake": 30.75,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
     }
   ]
 }
