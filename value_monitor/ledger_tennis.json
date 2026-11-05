@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 29.65,
+  "current_bankroll": 55.24,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4533,10 +4533,10 @@
       "ev_pct": 14.2,
       "kelly_pct": 30.5,
       "stake": 3.92,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 5.75,
+      "bankroll_after": 27.86
     },
     {
       "id": "8754d1a83b17f70b",
@@ -4569,10 +4569,10 @@
       "ev_pct": 37.4,
       "kelly_pct": 33.1,
       "stake": 10.27,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 21.89,
+      "bankroll_after": 49.75
     },
     {
       "id": "5e98103c23044629",
@@ -4587,10 +4587,10 @@
       "ev_pct": 24.8,
       "kelly_pct": 38.4,
       "stake": 7.97,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 0.0,
+      "bankroll_after": 49.75
     },
     {
       "id": "4c937b853bf7c361",
@@ -4605,10 +4605,10 @@
       "ev_pct": 19.5,
       "kelly_pct": 11.5,
       "stake": 1.47,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 3.96,
+      "bankroll_after": 53.71
     },
     {
       "id": "32d09c9b02821185",
@@ -4623,10 +4623,10 @@
       "ev_pct": 17.1,
       "kelly_pct": 34.9,
       "stake": 3.95,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 0.0,
+      "bankroll_after": 53.71
     },
     {
       "id": "be4a9f1bcd890f87",
@@ -4641,10 +4641,10 @@
       "ev_pct": 13.9,
       "kelly_pct": 7.8,
       "stake": 0.57,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 0.0,
+      "bankroll_after": 53.71
     },
     {
       "id": "b69fcf05b77bc998",
@@ -4659,6 +4659,60 @@
       "ev_pct": 11.3,
       "kelly_pct": 11.2,
       "stake": 0.76,
+      "status": "won",
+      "settled_at": "2026-11-05T07:46:34.729663+00:00",
+      "payout": 1.53,
+      "bankroll_after": 55.24
+    },
+    {
+      "id": "e83b81710141aed1",
+      "placed_at": "2026-11-05T07:46:34.614231+00:00",
+      "home": "Jan-Lennard Struff",
+      "away": "Casper Ruud",
+      "league": "ATP Paris Masters (Hard)",
+      "sport_key": "tennis_atp_paris_masters",
+      "commence_time": "2026-11-05T15:20:00Z",
+      "outcome": "Sieg Jan-Lennard Struff",
+      "odd": 2.539,
+      "ev_pct": 11.7,
+      "kelly_pct": 7.6,
+      "stake": 2.25,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "137c2202ec2eb065",
+      "placed_at": "2026-11-05T07:46:34.614260+00:00",
+      "home": "Nuno Borges",
+      "away": "Ignacio Buse",
+      "league": "ATP Paris Masters (Hard)",
+      "sport_key": "tennis_atp_paris_masters",
+      "commence_time": "2026-11-05T14:10:00Z",
+      "outcome": "Sieg Nuno Borges",
+      "odd": 1.642,
+      "ev_pct": 9.5,
+      "kelly_pct": 14.7,
+      "stake": 4.03,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "0e0be8c98bf2f615",
+      "placed_at": "2026-11-05T07:46:34.614293+00:00",
+      "home": "Rinky Hijikata",
+      "away": "Tomas Martin Etcheverry",
+      "league": "ATP Paris Masters (Hard)",
+      "sport_key": "tennis_atp_paris_masters",
+      "commence_time": "2026-11-05T13:00:00Z",
+      "outcome": "Sieg Rinky Hijikata",
+      "odd": 2.065,
+      "ev_pct": 5.7,
+      "kelly_pct": 5.4,
+      "stake": 1.26,
       "status": "pending",
       "settled_at": null,
       "payout": null,
