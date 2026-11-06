@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 55.24,
+  "current_bankroll": 47.56,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4677,10 +4677,10 @@
       "ev_pct": 11.7,
       "kelly_pct": 7.6,
       "stake": 2.25,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-11-06T07:45:27.440324+00:00",
+      "payout": 0.0,
+      "bankroll_after": 38.34
     },
     {
       "id": "137c2202ec2eb065",
@@ -4695,10 +4695,10 @@
       "ev_pct": 9.5,
       "kelly_pct": 14.7,
       "stake": 4.03,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-11-06T07:45:27.440324+00:00",
+      "payout": 6.62,
+      "bankroll_after": 44.96
     },
     {
       "id": "0e0be8c98bf2f615",
@@ -4713,6 +4713,60 @@
       "ev_pct": 5.7,
       "kelly_pct": 5.4,
       "stake": 1.26,
+      "status": "won",
+      "settled_at": "2026-11-06T07:45:27.440324+00:00",
+      "payout": 2.6,
+      "bankroll_after": 47.56
+    },
+    {
+      "id": "bd2f64183fef3f1e",
+      "placed_at": "2026-11-06T07:45:27.322572+00:00",
+      "home": "Luca Van Assche",
+      "away": "Rinky Hijikata",
+      "league": "ATP Paris Masters (Hard)",
+      "sport_key": "tennis_atp_paris_masters",
+      "commence_time": "2026-11-06T14:10:00Z",
+      "outcome": "Sieg Rinky Hijikata",
+      "odd": 2.379,
+      "ev_pct": 26.5,
+      "kelly_pct": 19.2,
+      "stake": 10.61,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "364b4675a347145c",
+      "placed_at": "2026-11-06T07:45:27.322601+00:00",
+      "home": "Casper Ruud",
+      "away": "Nuno Borges",
+      "league": "ATP Paris Masters (Hard)",
+      "sport_key": "tennis_atp_paris_masters",
+      "commence_time": "2026-11-06T19:30:00Z",
+      "outcome": "Sieg Nuno Borges",
+      "odd": 2.736,
+      "ev_pct": 15.4,
+      "kelly_pct": 8.9,
+      "stake": 3.97,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "6df30f9f9d6f2da0",
+      "placed_at": "2026-11-06T07:45:27.322637+00:00",
+      "home": "Ben Shelton",
+      "away": "Tommy Paul",
+      "league": "ATP Paris Masters (Hard)",
+      "sport_key": "tennis_atp_paris_masters",
+      "commence_time": "2026-11-06T13:00:00Z",
+      "outcome": "Sieg Ben Shelton",
+      "odd": 2.094,
+      "ev_pct": 6.2,
+      "kelly_pct": 5.7,
+      "stake": 2.32,
       "status": "pending",
       "settled_at": null,
       "payout": null,
