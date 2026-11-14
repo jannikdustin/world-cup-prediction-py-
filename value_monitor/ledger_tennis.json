@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 245.81,
+  "current_bankroll": 227.87,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4771,6 +4771,24 @@
       "settled_at": "2026-11-07T06:53:50.927953+00:00",
       "payout": 4.86,
       "bankroll_after": 52.42
+    },
+    {
+      "id": "c80902cd3d11c0c4",
+      "placed_at": "2026-11-14T07:27:09.385868+00:00",
+      "home": "Ben Shelton",
+      "away": "Arthur Fils",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-15T19:30:00Z",
+      "outcome": "Sieg Arthur Fils",
+      "odd": 2.399,
+      "ev_pct": 10.2,
+      "kelly_pct": 7.3,
+      "stake": 17.94,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
     }
   ]
 }
