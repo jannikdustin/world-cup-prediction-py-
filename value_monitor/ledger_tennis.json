@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 227.87,
+  "current_bankroll": 190.04,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4785,6 +4785,24 @@
       "ev_pct": 10.2,
       "kelly_pct": 7.3,
       "stake": 17.94,
+      "status": "lost",
+      "settled_at": "2026-11-16T07:44:08.231060+00:00",
+      "payout": 0.0,
+      "bankroll_after": 190.04
+    },
+    {
+      "id": "90223cce48e20e07",
+      "placed_at": "2026-11-16T07:44:08.109647+00:00",
+      "home": "Arthur Fils",
+      "away": "Rafael Jodar",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-17T13:00:00Z",
+      "outcome": "Sieg Arthur Fils",
+      "odd": 2.036,
+      "ev_pct": 17.2,
+      "kelly_pct": 16.6,
+      "stake": 37.83,
       "status": "pending",
       "settled_at": null,
       "payout": null,
