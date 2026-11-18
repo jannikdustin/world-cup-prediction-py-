@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 156.4,
+  "current_bankroll": 216.31,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4803,10 +4803,10 @@
       "ev_pct": 17.2,
       "kelly_pct": 16.6,
       "stake": 37.83,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-11-18T08:18:00.978222+00:00",
+      "payout": 77.02,
+      "bankroll_after": 216.31
     },
     {
       "id": "976b341022f9688d",
@@ -4839,6 +4839,42 @@
       "ev_pct": 4.1,
       "kelly_pct": 2.6,
       "stake": 4.18,
+      "status": "lost",
+      "settled_at": "2026-11-18T08:18:00.978222+00:00",
+      "payout": 0.0,
+      "bankroll_after": 216.31
+    },
+    {
+      "id": "68e9155996a8f595",
+      "placed_at": "2026-11-18T08:18:00.865032+00:00",
+      "home": "Alexander Zverev",
+      "away": "Arthur Fils",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-19T19:30:00Z",
+      "outcome": "Sieg Arthur Fils",
+      "odd": 3.257,
+      "ev_pct": 17.7,
+      "kelly_pct": 7.9,
+      "stake": 12.36,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "c7794aa06e384ef3",
+      "placed_at": "2026-11-18T08:18:00.865078+00:00",
+      "home": "Ben Shelton",
+      "away": "Rafael Jodar",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-19T13:00:00Z",
+      "outcome": "Sieg Rafael Jodar",
+      "odd": 2.744,
+      "ev_pct": 5.7,
+      "kelly_pct": 3.3,
+      "stake": 4.75,
       "status": "pending",
       "settled_at": null,
       "payout": null,
