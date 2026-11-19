@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 216.31,
+  "current_bankroll": 255.71,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4821,10 +4821,10 @@
       "ev_pct": 11.7,
       "kelly_pct": 15.5,
       "stake": 29.46,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "won",
+      "settled_at": "2026-11-19T08:29:35.774696+00:00",
+      "payout": 51.73,
+      "bankroll_after": 255.71
     },
     {
       "id": "0fa8d78a90590c48",
@@ -4875,6 +4875,24 @@
       "ev_pct": 5.7,
       "kelly_pct": 3.3,
       "stake": 4.75,
+      "status": "pending",
+      "settled_at": null,
+      "payout": null,
+      "bankroll_after": null
+    },
+    {
+      "id": "4eaacd45b95f36dd",
+      "placed_at": "2026-11-19T08:29:35.646707+00:00",
+      "home": "Daniil Medvedev",
+      "away": "Frances Tiafoe",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-20T19:30:00Z",
+      "outcome": "Sieg Frances Tiafoe",
+      "odd": 3.05,
+      "ev_pct": 11.6,
+      "kelly_pct": 5.7,
+      "stake": 12.33,
       "status": "pending",
       "settled_at": null,
       "payout": null,
