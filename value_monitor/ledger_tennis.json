@@ -4857,10 +4857,10 @@
       "ev_pct": 17.7,
       "kelly_pct": 7.9,
       "stake": 12.36,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-11-20T08:10:13.887964+00:00",
+      "payout": 0.0,
+      "bankroll_after": 255.71
     },
     {
       "id": "c7794aa06e384ef3",
@@ -4875,10 +4875,10 @@
       "ev_pct": 5.7,
       "kelly_pct": 3.3,
       "stake": 4.75,
-      "status": "pending",
-      "settled_at": null,
-      "payout": null,
-      "bankroll_after": null
+      "status": "lost",
+      "settled_at": "2026-11-20T08:10:13.887964+00:00",
+      "payout": 0.0,
+      "bankroll_after": 255.71
     },
     {
       "id": "4eaacd45b95f36dd",
