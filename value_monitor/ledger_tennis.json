@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 255.71,
+  "current_bankroll": 248.29,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4893,6 +4893,24 @@
       "ev_pct": 11.6,
       "kelly_pct": 5.7,
       "stake": 12.33,
+      "status": "lost",
+      "settled_at": "2026-11-21T08:04:05.310941+00:00",
+      "payout": 0.0,
+      "bankroll_after": 248.29
+    },
+    {
+      "id": "24b023c4025e6f5a",
+      "placed_at": "2026-11-21T08:04:05.213616+00:00",
+      "home": "Alexander Zverev",
+      "away": "Daniil Medvedev",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-21T19:30:00Z",
+      "outcome": "Sieg Daniil Medvedev",
+      "odd": 2.418,
+      "ev_pct": 4.2,
+      "kelly_pct": 2.9,
+      "stake": 7.42,
       "status": "pending",
       "settled_at": null,
       "payout": null,
