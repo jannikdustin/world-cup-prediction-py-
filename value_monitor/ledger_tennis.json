@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "current_bankroll": 248.29,
+  "current_bankroll": 197.39,
   "bets": [
     {
       "id": "eb06f4034537712c",
@@ -4911,6 +4911,24 @@
       "ev_pct": 4.2,
       "kelly_pct": 2.9,
       "stake": 7.42,
+      "status": "lost",
+      "settled_at": "2026-11-22T07:51:40.512024+00:00",
+      "payout": 0.0,
+      "bankroll_after": 197.39
+    },
+    {
+      "id": "3b603e01b2533589",
+      "placed_at": "2026-11-22T07:51:40.390088+00:00",
+      "home": "Alexander Zverev",
+      "away": "Carlos Alcaraz",
+      "league": "ATP Finals (Hard)",
+      "sport_key": "tennis_atp_finals",
+      "commence_time": "2026-11-22T17:00:00Z",
+      "outcome": "Sieg Carlos Alcaraz",
+      "odd": 1.437,
+      "ev_pct": 9.0,
+      "kelly_pct": 20.5,
+      "stake": 50.9,
       "status": "pending",
       "settled_at": null,
       "payout": null,
